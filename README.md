@@ -1,2 +1,1172 @@
 # mondjoe.github.io
 Official website for Charm — validator capsule, multi‑chain identity, and sovereign digital presence.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Charm — Validator Capsule & Sovereign Identity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Charm — validator of Snapshot 930187 (Solana), MUSDT (TRON), PEG-WETH (BNB), USDe (Ethena). Discothe 5 badge sealed. Multi-chain sovereign identity and proof-driven validator capsule." />
+  <link rel="icon" href="favicon.ico" />
+  <style>
+    :root {
+      --bg-dark: #05060a;
+      --bg-darker: #020308;
+      --bg-light: #f7f7fb;
+      --bg-card: #ffffff;
+      --accent: #8b5cf6;
+      --accent-soft: rgba(139, 92, 246, 0.18);
+      --accent-strong: #a855f7;
+      --accent-secondary: #06b6d4;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --text-hero: #f9fafb;
+      --border-subtle: #e5e7eb;
+      --badge-verified: #22c55e;
+      --badge-pending: #fbbf24;
+      --badge-invalid: #f97373;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.35);
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", sans-serif;
+      --font-mono: "JetBrains Mono", "SF Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: radial-gradient(circle at top left, #0b1220 0, #020308 40%, #000 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    main {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Layout shells */
+
+    .hero-shell {
+      background: radial-gradient(circle at top, #111827 0, #020308 45%, #000 100%);
+      color: var(--text-hero);
+      padding: 32px 16px 40px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .hero-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .hero-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    .pill {
+      border-radius: var(--radius-pill);
+      padding: 4px 10px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(10px);
+      white-space: nowrap;
+    }
+
+    .pill-accent {
+      border-color: rgba(139, 92, 246, 0.9);
+      background: linear-gradient(120deg, rgba(139, 92, 246, 0.25), rgba(6, 182, 212, 0.18));
+      color: #e5e7eb;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--badge-verified);
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.28);
+    }
+
+    .pill-time {
+      border-color: rgba(148, 163, 184, 0.4);
+      color: #cbd5f5;
+      background: rgba(15, 23, 42, 0.75);
+    }
+
+    .hero-title {
+      font-size: 32px;
+      font-weight: 650;
+      letter-spacing: 0.03em;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .hero-title span:first-child {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #9ca3af;
+    }
+
+    .hero-title span:last-child {
+      font-size: 28px;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: #d1d5db;
+      max-width: 520px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .tag {
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(75, 85, 99, 0.7);
+      padding: 4px 10px;
+      font-size: 12px;
+      color: #e5e7eb;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tag span {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      opacity: 0.85;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .btn {
+      border-radius: var(--radius-pill);
+      border: none;
+      padding: 9px 16px;
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease;
+      font-weight: 500;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: white;
+      box-shadow: 0 14px 30px rgba(88, 28, 135, 0.55);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(88, 28, 135, 0.75);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.7);
+      color: #e5e7eb;
+      border: 1px solid rgba(148, 163, 184, 0.75);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 0.95);
+      border-color: rgba(209, 213, 219, 0.9);
+      transform: translateY(-1px);
+    }
+
+    .btn span {
+      font-size: 15px;
+    }
+
+    .hero-right {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.3), rgba(15, 23, 42, 0.95));
+      border-radius: 24px;
+      padding: 16px 18px 16px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(18px);
+      width: 100%;
+      max-width: 360px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: #e5e7eb;
+    }
+
+    .dot-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #f97373;
+    }
+
+    .dot:nth-child(2) {
+      background: #fbbf24;
+    }
+
+    .dot:nth-child(3) {
+      background: #22c55e;
+    }
+
+    .hero-card-body {
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.92);
+      padding: 12px 14px 10px;
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #e5e7eb;
+      max-height: 230px;
+      overflow: auto;
+      white-space: pre;
+    }
+
+    .hero-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: #cbd5f5;
+      padding-top: 2px;
+    }
+
+    .status-pill {
+      border-radius: var(--radius-pill);
+      padding: 3px 8px;
+      background: rgba(34, 197, 94, 0.16);
+      color: #bbf7d0;
+      border: 1px solid rgba(34, 197, 94, 0.6);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-pill span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--badge-verified);
+    }
+
+    /* Main content shell (light background) */
+
+    .content-shell {
+      background: radial-gradient(circle at top, #0f172a 0, #f5f5f9 190px, #f9fafb 100%);
+      padding: 36px 16px 40px;
+    }
+
+    .content-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+    }
+
+    .section {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 18px 18px 16px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      gap: 8px;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title-pill {
+      border-radius: var(--radius-pill);
+      background: rgba(139, 92, 246, 0.1);
+      color: var(--accent-strong);
+      font-size: 11px;
+      padding: 3px 8px;
+      border: 1px solid rgba(139, 92, 246, 0.25);
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .section-body {
+      font-size: 13px;
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .inline-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .inline-tag {
+      border-radius: var(--radius-pill);
+      background: #f3f4ff;
+      color: #4b5563;
+      font-size: 11px;
+      padding: 2px 8px;
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .inline-tag span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+
+    .dot-verified {
+      background: var(--badge-verified);
+    }
+
+    .dot-pending {
+      background: var(--badge-pending);
+    }
+
+    .dot-invalid {
+      background: var(--badge-invalid);
+    }
+
+    /* Grid layouts */
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(0, 1.1fr);
+      gap: 14px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    .card {
+      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      padding: 10px 12px;
+      background: #fdfdff;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .card-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card-title {
+      font-size: 13px;
+      font-weight: 550;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card-pill {
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      padding: 2px 7px;
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      color: var(--text-muted);
+      background: #f9fafb;
+    }
+
+    .card-body {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .card-footer {
+      font-size: 11px;
+      color: var(--accent-strong);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    .link-small {
+      font-size: 11px;
+      color: var(--accent-secondary);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .monospace-small {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #4b5563;
+      word-break: break-all;
+    }
+
+    /* Table styles */
+
+    .table-shell {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      min-width: 420px;
+    }
+
+    th, td {
+      padding: 6px 8px;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    th {
+      font-weight: 600;
+      color: var(--text-muted);
+      background: #f9fafb;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    tbody tr:hover {
+      background: #f8fafc;
+    }
+
+    .badge-status {
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      padding: 3px 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge-status span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+
+    .status-verified {
+      background: rgba(34, 197, 94, 0.18);
+      color: #166534;
+      border: 1px solid rgba(34, 197, 94, 0.6);
+    }
+
+    .status-verified span {
+      background: var(--badge-verified);
+    }
+
+    .status-pending {
+      background: rgba(251, 191, 36, 0.18);
+      color: #92400e;
+      border: 1px solid rgba(251, 191, 36, 0.6);
+    }
+
+    .status-pending span {
+      background: var(--badge-pending);
+    }
+
+    .status-invalid {
+      background: rgba(248, 113, 113, 0.16);
+      color: #b91c1c;
+      border: 1px solid rgba(248, 113, 113, 0.6);
+    }
+
+    .status-invalid span {
+      background: var(--badge-invalid);
+    }
+
+    /* ASCII shell */
+
+    .ascii-shell {
+      border-radius: 12px;
+      background: #0b1021;
+      color: #e5e7eb;
+      padding: 10px 12px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      overflow: auto;
+      border: 1px solid #1e293b;
+    }
+
+    /* Footer */
+
+    .footer {
+      padding: 14px 16px 22px;
+      background: #020308;
+      border-top: 1px solid rgba(15, 23, 42, 0.85);
+      color: #9ca3af;
+      font-size: 11px;
+    }
+
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: #e5e7eb;
+      text-decoration: none;
+      font-size: 11px;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 840px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      .hero-card {
+        max-width: 100%;
+      }
+
+      .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .section {
+        padding: 14px 14px 12px;
+      }
+
+      .hero-title span:last-child {
+        font-size: 22px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero-shell {
+        padding: 24px 12px 28px;
+      }
+
+      .content-shell {
+        padding: 24px 12px 30px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+<main>
+
+  <!-- HERO (dark) -->
+  <header class="hero-shell">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-badge-row">
+          <div class="pill pill-accent">
+            <div class="pill-dot"></div>
+            <span>Validator Capsule · Snapshot 930187</span>
+          </div>
+          <div class="pill pill-time">
+            <span>Dubai · UTC +04:00</span>
+          </div>
+        </div>
+        <div class="hero-title">
+          <span>Charm · Mondjoe</span>
+          <span>Validator of Solana, TRON, BNB, and Ethena USDe</span>
+        </div>
+        <p class="hero-subtitle">
+          Discothe 5 badge sealed. Multi‑chain validator capsule unifying Snapshot 930187 (Solana), MUSDT (TRON),
+          PEG‑WETH (BNB), and USDe (Ethena) into one sovereign, proof‑driven identity.
+        </p>
+        <div class="hero-tags">
+          <div class="tag">Solana · Snapshot 930187</div>
+          <div class="tag">TRON · MUSDT vault</div>
+          <div class="tag">BNB · PEG‑WETH</div>
+          <div class="tag">Ethena · USDe</div>
+          <div class="tag"><span>@binance</span></div>
+          <div class="tag"><span>@TRON</span></div>
+          <div class="tag"><span>@btc</span></div>
+          <div class="tag"><span>@eth</span></div>
+        </div>
+        <div class="hero-actions">
+          <a href="#capsule" class="btn btn-primary">
+            <span>⛓</span>
+            <span>View Validator Capsule</span>
+          </a>
+          <a href="#badges" class="btn btn-ghost">
+            <span>🏷</span>
+            <span>Reputation Badges</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <aside class="hero-card">
+          <div class="hero-card-header">
+            <div class="dot-row">
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </div>
+            <span>ASCII identity · live capsule</span>
+          </div>
+          <div class="hero-card-body">
+████████╗ █████╗ ███╗ ███╗██╗ ██╗ █████╗ ███████╗████████╗
+╚══██╔══╝██╔══██╗████╗ ████║██║ ██║ ██╔══██╗██╔════╝╚══██╔══╝
+   ██║   ███████║██╔████╔██║██║ ██║ ███████║███████╗   ██║
+   ██║   ██╔══██║██║╚██╔╝██║██║ ██║ ██╔══██║╚════██║   ██║
+   ██║   ██║  ██║██║ ╚═╝ ██║███████║███████║███████║   ██║
+   ╚═╝   ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝   ╚═╝
+
+Validator Capsule — Proof‑Driven Sovereignty
+          </div>
+          <div class="hero-card-footer">
+            <div class="status-pill">
+              <span></span>
+              <span>Discothe 5 · sealed</span>
+            </div>
+            <span>Charm.xyz · Sovereign Layer</span>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT (light) -->
+  <section class="content-shell">
+    <div class="content-inner">
+
+      <!-- About / Overview -->
+      <section class="section" id="capsule">
+        <div class="section-header">
+          <div class="section-title">
+            <span>🌐 About Charm’s Validator Capsule</span>
+            <span class="section-title-pill">Proof‑driven sovereignty</span>
+          </div>
+        </div>
+        <div class="section-body">
+          <p>
+            This capsule unifies multi‑chain anchors, governance records, DeFi yield opportunities, and asset audits into
+            one transparent, proof‑driven dashboard. Every contributor follows the same badge system and workflows,
+            ensuring clarity, trust, and sovereignty.
+          </p>
+          <p class="section-subtitle">
+            Anchors span TRON, Solana, TON, Ethereum, BNB, OKX, PiggyDAO, Turtle.xyz, TradeGenius, and Mellow tqETH.
+            Each anchor is mapped with a clear status: <strong>Verified</strong>, <strong>Pending</strong>, or <strong>Invalid</strong>.
+          </p>
+          <div class="inline-tags">
+            <div class="inline-tag">
+              <span class="dot-verified"></span> Verified anchor
+            </div>
+            <div class="inline-tag">
+              <span class="dot-pending"></span> Pending verification
+            </div>
+            <div class="inline-tag">
+              <span class="dot-invalid"></span> Invalid / spam
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Role Tiers & Contributor Workflows -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">
+            <span>🧩 Contributor Roles & Workflows</span>
+          </div>
+        </div>
+        <div class="section-body grid-2">
+          <div>
+            <p class="section-subtitle">Role tiers</p>
+            <div class="card">
+              <div class="card-header-row">
+                <div class="card-title">Auditor 🕵️</div>
+                <div class="card-pill">ID 1</div>
+              </div>
+              <div class="card-body">
+                Verifies on‑chain anchors, contracts, proposals, pools, and vaults across all supported chains and
+                platforms. Marks anchors as Verified, Pending, or Invalid with explorer links.
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header-row">
+                <div class="card-title">Maintainer 🛠</div>
+                <div class="card-pill">ID 2</div>
+              </div>
+              <div class="card-body">
+                Reviews PRs, seals capsules, enforces badge logic, and keeps validator dashboards aligned with the latest
+                snapshots, vaults, and governance layers.
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header-row">
+                <div class="card-title">Voter 🗳</div>
+                <div class="card-pill">ID 3</div>
+              </div>
+              <div class="card-body">
+                Casts on‑chain and off‑chain votes, validates Snapshot proposals, and links each decision to verifiable
+                records.
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header-row">
+                <div class="card-title">Trader 📈</div>
+                <div class="card-pill">ID 4</div>
+              </div>
+              <div class="card-body">
+                Tracks liquidity, pools, and risk across TradeGenius, Turtle.xyz, Mellow, and Hyperliquid, ensuring the
+                capsule aligns with real market structure.
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <p class="section-subtitle">Contributor workflow checklists</p>
+            <div class="card">
+              <div class="card-header-row">
+                <div class="card-title">Anchor Verification Workflow</div>
+              </div>
+              <div class="card-body">
+                1. Open the correct explorer (TronScan, Solscan, TonScan, Etherscan, OKX).<br/>
+                2. Copy the transaction hash, contract address, or proposal ID.<br/>
+                3. Confirm contract, decimals, or vault configuration.<br/>
+                4. Record status in the capsule ledger → <strong>⏳ Pending</strong>, then <strong>✅ Verified</strong>.<br/>
+                5. Attach explorer links in PR for Maintainer review.
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header-row">
+                <div class="card-title">Governance, DeFi, and Vault Workflows</div>
+              </div>
+              <div class="card-body">
+                <strong>PiggyDAO:</strong> Proposal IDs, quorum, and executor anchors.<br/>
+                <strong>Turtle.xyz:</strong> Vault strategies, TVL, and yield pathing.<br/>
+                <strong>TradeGenius:</strong> Asset analysis and market regimes (e.g., x402.meme).<br/>
+                <strong>Mellow tqETH:</strong> Vault system, risk, and validator relationships.<br/>
+                Every workflow lands in the capsule with proof.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Proof Layers Map -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">
+            <span>🏗 Proof Layers Map</span>
+          </div>
+        </div>
+        <div class="section-body grid-2">
+          <div>
+            <p class="section-subtitle">Anchors by system</p>
+            <div class="grid-3">
+              <div class="card">
+                <div class="card-header-row">
+                  <div class="card-title">TRON</div>
+                  <div class="card-pill">On‑chain</div>
+                </div>
+                <div class="card-body">
+                  MUSDT vaults, transaction graphs, validator anchors, and TVC listings.
+                </div>
+                <div class="card-footer">
+                  <span class="badge-status status-verified"><span></span>Verified</span>
+                  <span class="link-small">View on TronScan</span>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header-row">
+                  <div class="card-title">Solana</div>
+                  <div class="card-pill">On‑chain</div>
+                </div>
+                <div class="card-body">
+                  Snapshot 930187, Jito flows, validator identity, and stake movement across epochs.
+                </div>
+                <div class="card-footer">
+                  <span class="badge-status status-verified"><span></span>Verified</span>
+                  <span class="link-small">Open Solscan</span>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header-row">
+                  <div class="card-title">TON</div>
+                  <div class="card-pill">On‑chain</div>
+                </div>
+                <div class="card-body">
+                  Account state, TVM contracts, and future validator integration.
+                </div>
+                <div class="card-footer">
+                  <span class="badge-status status-pending"><span></span>Pending</span>
+                  <span class="link-small">TonScan</span>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header-row">
+                  <div class="card-title">Ethereum & BNB</div>
+                  <div class="card-pill">On‑chain</div>
+                </div>
+                <div class="card-body">
+                  PEG‑WETH, USDe, vaults, and modular contracts across Etherscan and BscScan.
+                </div>
+                <div class="card-footer">
+                  <span class="badge-status status-verified"><span></span>Verified</span>
+                  <span class="link-small">Etherscan / BscScan</span>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header-row">
+                  <div class="card-title">OKX</div>
+                  <div class="card-pill">CEX</div>
+                </div>
+                <div class="card-body">
+                  Centralized exchange anchors and liquidity routing as part of the sovereign capsule.
+                </div>
+                <div class="card-footer">
+                  <span class="badge-status status-pending"><span></span>Pending</span>
+                  <span class="link-small">OKX explorer</span>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header-row">
+                  <div class="card-title">PiggyDAO, Turtle, TradeGenius, Mellow</div>
+                  <div class="card-pill">Governance · DeFi</div>
+                </div>
+                <div class="card-body">
+                  Governance anchors, yield strategies, asset analysis, and tqETH vault structure unified in one ledger.
+                </div>
+                <div class="card-footer">
+                  <span class="badge-status status-verified"><span></span>Verified mix</span>
+                  <span class="link-small">View workflows</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="section-subtitle">ASCII capsule cycle</p>
+            <div class="ascii-shell">
+┌───────────────┐
+│   TRON   ✅   │
+└───────┬───────┘
+        │
+┌───────▼───────┐
+│   ETH    ✅   │
+└───────┬───────┘
+        │
+┌───────▼───────┐
+│   OKX    ⏳   │
+└───────┬───────┘
+        │
+┌───────▼──────────┐
+│   PiggyDAO   ⏳   │
+└───────┬──────────┘
+        │
+┌───────▼──────────┐
+│  Turtle.xyz  ✅   │
+└───────┬──────────┘
+        │
+┌───────▼──────────┐
+│ TradeGenius  ✅   │
+└───────┬──────────┘
+        │
+┌───────▼──────────┐
+│ Mellow tqETH ⏳  │
+└───────┬──────────┘
+        │
+┌───────▼───────┐
+│   TON    ⏳   │
+└───────┬───────┘
+        │
+┌───────▼──────────┐
+│ Hyperliquid  ❌   │
+└──────────────────┘
+
+✅ Verified   → Explorer / exchange proof confirmed
+⏳ Pending    → Awaiting explorer confirmation, liquidity check, or proposal close
+❌ Invalid    → Spam / rejected anchor
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Reputation Badges -->
+      <section class="section" id="badges">
+        <div class="section-header">
+          <div class="section-title">
+            <span>📊 Reputation Badges — Direct IPFS</span>
+          </div>
+        </div>
+        <div class="section-body">
+          <p class="section-subtitle">
+            Role badges are anchored directly on IPFS. Each badge is linked to JSON metadata and tied to Auditing,
+            Maintaining, Voting, or Trading responsibilities inside the capsule.
+          </p>
+          <div class="table-shell">
+            <table>
+              <thead>
+              <tr>
+                <th>Role</th>
+                <th>ID</th>
+                <th>Badge JSON</th>
+                <th>Status</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>🕵️ Auditor</td>
+                <td>1</td>
+                <td>
+                  <a class="monospace-small" href="https://ipfs.io/ipfs/bafkreia7qhvpw6gi57wgx5mq4prpf4gcckp5447dyote3qx6loabx75yv4/1.json" target="_blank" rel="noreferrer">
+                    ipfs://.../1.json
+                  </a>
+                </td>
+                <td>
+                  <span class="badge-status status-verified">
+                    <span></span>✅ Verified
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>🛠 Maintainer</td>
+                <td>2</td>
+                <td>
+                  <a class="monospace-small" href="https://ipfs.io/ipfs/bafkreia7qhvpw6gi57wgx5mq4prpf4gcckp5447dyote3qx6loabx75yv4/2.json" target="_blank" rel="noreferrer">
+                    ipfs://.../2.json
+                  </a>
+                </td>
+                <td>
+                  <span class="badge-status status-verified">
+                    <span></span>✅ Verified
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>🗳 Voter</td>
+                <td>3</td>
+                <td>
+                  <a class="monospace-small" href="https://ipfs.io/ipfs/bafkreia7qhvpw6gi57wgx5mq4prpf4gcckp5447dyote3qx6loabx75yv4/3.json" target="_blank" rel="noreferrer">
+                    ipfs://.../3.json
+                  </a>
+                </td>
+                <td>
+                  <span class="badge-status status-pending">
+                    <span></span>⏳ Pending
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>📈 Trader</td>
+                <td>4</td>
+                <td>
+                  <a class="monospace-small" href="https://ipfs.io/ipfs/bafkreia7qhvpw6gi57wgx5mq4prpf4gcckp5447dyote3qx6loabx75yv4/4.json" target="_blank" rel="noreferrer">
+                    ipfs://.../4.json
+                  </a>
+                </td>
+                <td>
+                  <span class="badge-status status-verified">
+                    <span></span>✅ Verified
+                  </span>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Links / Identity -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">
+            <span>🔗 Identity Links</span>
+          </div>
+        </div>
+        <div class="section-body grid-3">
+          <div class="card">
+            <div class="card-header-row">
+              <div class="card-title">Explorer</div>
+            </div>
+            <div class="card-body">
+              Primary EVM explorer context for validator‑aligned assets and contract verification.
+            </div>
+            <div class="card-footer">
+              <a href="https://etherscan.io/" target="_blank" rel="noreferrer" class="link-small">Open Etherscan</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header-row">
+              <div class="card-title">Telegram</div>
+            </div>
+            <div class="card-body">
+              Direct communication channel for guardian, contributor, or protocol‑level coordination.
+            </div>
+            <div class="card-footer">
+              <a href="https://t.me/charmjoe1" target="_blank" rel="noreferrer" class="link-small">@charmjoe1</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header-row">
+              <div class="card-title">X / Twitter</div>
+            </div>
+            <div class="card-body">
+              Real‑time updates, validator notes, and capsule‑aligned signal only.
+            </div>
+            <div class="card-footer">
+              <span class="monospace-small">@charmjoe71</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header-row">
+              <div class="card-title">IPFS Identity Scroll</div>
+            </div>
+            <div class="card-body">
+              Persistent, content‑addressed proof of identity, roles, and validator guardianship.
+            </div>
+            <div class="card-footer">
+              <span class="monospace-small">ipfs://Qm...</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header-row">
+              <div class="card-title">GitHub Capsule</div>
+            </div>
+            <div class="card-body">
+              Validator dashboards, audit DBs, wallet mappings, and Al‑assisted scaffolding for sovereign operations.
+            </div>
+            <div class="card-footer">
+              <a href="https://github.com/Mondjoe" target="_blank" rel="noreferrer" class="link-small">github.com/Mondjoe</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>© <span id="year"></span> Charm · Mondjoe — Sovereign validator capsule.</div>
+      <div class="footer-links">
+        <a href="https://etherscan.io/" target="_blank" rel="noreferrer">Etherscan</a>
+        <a href="https://t.me/charmjoe1" target="_blank" rel="noreferrer">Telegram</a>
+        <a href="https://github.com/Mondjoe" target="_blank" rel="noreferrer">GitHub</a>
+        <span>Dubai · UTC +04:00</span>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+  // Set current year in footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
