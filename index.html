@@ -1,425 +1,174 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charm — Validator Capsule</title>
-    <style>
-        :root {
-            --bg: #000;
-            --card: #0d0d0d;
-            --accent: #ff2a2a;
-            --accent-soft: rgba(255, 42, 42, 0.2);
-            --text: #ffffff;
-            --muted: #888888;
-        }
+████████╗ █████╗ ███╗   ███╗██╗     ██╗      █████╗ ███████╗████████╗
+╚══██╔══╝██╔══██╗████╗ ████║██║     ██║     ██╔══██╗██╔════╝╚══██╔══╝
+   ██║   ███████║██╔████╔██║██║     ██║     ███████║███████╗   ██║   
+   ██║   ██╔══██║██║╚██╔╝██║██║     ██║     ██╔══██║╚════██║   ██║   
+   ██║   ██║  ██║██║ ╚═╝ ██║███████╗███████╗██║  ██║███████║   ██║   
+   ╚═╝   ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝   
 
-        * {
-            box-sizing: border-box;
-        }
+                 🌐 Validator Capsule — Proof Driven Sovereignty
 
-        body {
-            margin: 0;
-            padding: 0;
-            background: radial-gradient(circle at top, #1a1a1a 0, #000 45%, #000 100%);
-            color: var(--text);
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        }
+---
 
-        a {
-            color: inherit;
-        }
+## 🚀 Quick Start (5‑Minute Onboarding)
+1. **Choose your role tier** → Auditor 🕵️, Maintainer 🛠, Voter 🗳, Trader 📈  
+2. **Open the right explorer** → TronScan, Solscan, TonScan, Etherscan, OKX, Snapshot, Turtle.xyz, TradeGenius  
+3. **Verify one anchor** → copy transaction hash, contract address, or proposal ID  
+4. **Record proof in ledger** → mark ⏳ Pending → ✅ Verified once confirmed  
+5. **Submit PR** → fork repo, commit changes, include explorer links, request Maintainer review  
 
-        .hero {
-            text-align: center;
-            padding: 120px 20px 80px;
-            position: relative;
-            overflow: hidden;
-        }
+---
 
-        .hero::before {
-            content: "";
-            position: absolute;
-            inset: -40%;
-            background: radial-gradient(circle at top, var(--accent-soft), transparent 60%);
-            opacity: 0.4;
-            pointer-events: none;
-            animation: pulseGlow 8s ease-in-out infinite;
-        }
+## 📖 Overview
+This capsule unifies **multi‑chain anchors, governance records, DeFi yield opportunities, and asset audits** into one transparent, proof‑driven dashboard.  
+Every contributor follows the same badge system and workflows, ensuring clarity, trust, and sovereignty.
 
-        @keyframes pulseGlow {
-            0%, 100% { opacity: 0.25; transform: scale(1); }
-            50% { opacity: 0.55; transform: scale(1.05); }
-        }
+---
 
-        .hero-inner {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-            margin: 0 auto;
-        }
+## 🏷️ Badge Legend
 
-        .logo-circle {
-            width: 96px;
-            height: 96px;
-            border-radius: 50%;
-            border: 1px solid var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            background: rgba(0, 0, 0, 0.7);
-            box-shadow: 0 0 24px rgba(255, 42, 42, 0.4);
-            overflow: hidden;
-            animation: floatLogo 5s ease-in-out infinite;
-        }
+---
 
-        @keyframes floatLogo {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-        }
+## 🧩 Contributor Role Tiers
 
-        .logo-circle img {
-            width: 80%;
-            height: 80%;
-            object-fit: contain;
-        }
+---
 
-        .hero h1 {
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--accent);
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-        }
+## 🔎 Contributor Workflow Checklists
 
-        .hero p {
-            font-size: 18px;
-            opacity: 0.85;
-            margin-bottom: 36px;
-        }
+<details>
+<summary>Anchor Verification Workflow</summary>
 
-        .buttons {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
+- Locate anchor (TRON, Solana, TON, ETH, OKX, PiggyDAO, Turtle.xyz, TradeGenius, Mellow Protocol)  
+- Verify via explorer  
+- Record evidence in capsule ledger  
+- Flip badge ⏳ → ✅  
 
-        .btn {
-            padding: 10px 24px;
-            border-radius: 999px;
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            transition: 0.25s;
-            background: rgba(0, 0, 0, 0.7);
-        }
+</details>
 
-        .btn:hover {
-            background: var(--accent);
-            color: #000;
-            box-shadow: 0 0 18px rgba(255, 42, 42, 0.6);
-            transform: translateY(-1px);
-        }
+<details>
+<summary>Governance Workflow (PiggyDAO)</summary>
 
-        .layout {
-            max-width: 1080px;
-            margin: 0 auto 60px;
-            padding: 0 20px 40px;
-            display: grid;
-            grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
-            gap: 28px;
-        }
+- Access Snapshot  
+- Review proposal  
+- Cast vote  
+- Record proposal ID + result  
 
-        @media (max-width: 900px) {
-            .layout {
-                grid-template-columns: 1fr;
-            }
-        }
+</details>
 
-        .card {
-            background: var(--card);
-            border-radius: 14px;
-            padding: 22px 20px;
-            border: 1px solid #1f1f1f;
-            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.02);
-        }
+<details>
+<summary>DeFi Yield Workflow (Turtle.xyz)</summary>
 
-        .card h2 {
-            margin: 0 0 12px;
-            font-size: 18px;
-            color: var(--accent);
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
+- Open vault  
+- Check APR + incentives  
+- Deposit ETH  
+- Record contract + APR  
 
-        .card p {
-            margin: 0 0 12px;
-            font-size: 14px;
-            color: var(--muted);
-        }
+</details>
 
-        .pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 4px 10px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--muted);
-            margin-bottom: 10px;
-        }
+<details>
+<summary>Asset Analysis Workflow (TradeGenius)</summary>
 
-        .pill-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--accent);
-        }
+- Search asset (`x402.meme`)  
+- Check audit score + liquidity  
+- Inspect holder distribution  
+- Record in capsule ledger  
 
-        .badges-grid, .chains-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 10px;
-            margin-top: 10px;
-        }
+</details>
 
-        .badge, .chain {
-            padding: 12px 10px;
-            border-radius: 10px;
-            background: #111;
-            border: 1px solid #262626;
-            font-size: 13px;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
+<details>
+<summary>DeFi Vault Workflow (Mellow Protocol tqETH)</summary>
 
-        .badge-label {
-            font-weight: 500;
-        }
+- Verify Configurator + Vault contracts  
+- Check Fee Manager, Risk Manager, Oracle  
+- Confirm final tqETH Vault  
+- Record all contracts with ✅ badges  
 
-        .badge-tag {
-            font-size: 11px;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
+</details>
 
-        .chain-label {
-            font-size: 12px;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
+<details>
+<summary>Contributor PR Workflow</summary>
 
-        .chain-address {
-            font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-            font-size: 12px;
-            word-break: break-all;
-        }
+- Fork repo  
+- Update ledger with new anchor  
+- Commit changes  
+- Submit PR with explorer links  
+- Maintainer review → badge flip  
 
-        .chain-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 8px;
-        }
+</details>
 
-        .explorer-link {
-            font-size: 11px;
-            color: var(--accent);
-            text-decoration: none;
-            opacity: 0.8;
-        }
+---
 
-        .explorer-link:hover {
-            opacity: 1;
-            text-decoration: underline;
-        }
+## 🏗️ Proof Layers Map
+- **TRON, Solana, TON, ETH** → On‑chain anchors  
+- **OKX** → Centralized exchange anchors  
+- **PiggyDAO** → Governance anchors  
+- **Turtle.xyz** → Yield vault (DeFi)  
+- **TradeGenius** → Asset analysis (`x402.meme`)  
+- **Mellow Protocol** → tqETH vault system  
 
-        .dashboard-card {
-            margin-top: 10px;
-            padding: 14px 12px;
-            border-radius: 10px;
-            background: #111;
-            border: 1px dashed #333;
-            font-size: 13px;
-        }
+---
 
-        .dashboard-meta {
-            font-size: 11px;
-            color: var(--muted);
-            margin-top: 6px;
-        }
+## ✅ Contribution Guide
+- Choose your role tier (Auditor, Maintainer, Voter, Trader)  
+- Follow the relevant workflow checklist  
+- Record proof in capsule ledger with badge status  
+- Submit PR for Maintainer review  
+- Capsule remains unified, transparent, and proof‑driven  
 
-        footer {
-            text-align: center;
-            padding: 26px 20px 40px;
-            font-size: 12px;
-            color: var(--muted);
-            border-top: 1px solid #111;
-            margin-top: 10px;
-        }
-    </style>
-</head>
-<body>
+---
 
-    <header class="hero">
-        <div class="hero-inner">
-            <div class="logo-circle">
-                <!-- TODO: update src to your real logo path, e.g. /assets/logo-hero.png -->
-                <img src="assets/logo.png" alt="Charm Validator Capsule Logo">
-            </div>
-            <h1>Charm — Validator Capsule</h1>
-            <p>Multi‑chain identity. Sovereign presence. Proof‑driven architecture.</p>
+## 🔄 ASCII Capsule Cycle with Badge Status
+  ┌───────────────┐
+  │   TRON   ✅   │
+  └───────┬───────┘
+          │
+  ┌───────▼───────┐
+  │   ETH    ✅   │
+  └───────┬───────┘
+          │
+  ┌───────▼───────┐
+  │   OKX    ⏳   │
+  └───────┬───────┘
+          │
+  ┌───────▼──────────┐
+  │   PiggyDAO   ⏳   │
+  └───────┬──────────┘
+          │
+  ┌───────▼──────────┐
+  │   Turtle.xyz ✅   │
+  └───────┬──────────┘
+          │
+  ┌───────▼──────────┐
+  │  TradeGenius ✅   │
+  └───────┬──────────┘
+          │
+  ┌───────▼──────────┐
+  │ Mellow tqETH ⏳   │
+  └───────┬──────────┘
+          │
+  ┌───────▼───────┐
+  │   TON    ⏳   │
+  └───────┬───────┘
+          │
+  ┌───────▼──────────┐
+  │ Hyperliquid ❌    │
+  └──────────────────┘
 
-            <div class="buttons">
-                <a class="btn" href="#badges">Badges</a>
-                <a class="btn" href="#chains">Chains</a>
-                <a class="btn" href="#dashboard">Dashboard</a>
-            </div>
-        </div>
-    </header>
+---
 
-    <main class="layout">
-        <!-- LEFT COLUMN -->
-        <section class="card" id="identity">
-            <div class="pill">
-                <span class="pill-dot"></span>
-                <span>Identity Layer</span>
-            </div>
-            <h2>Validator Capsule</h2>
-            <p>
-                Charm is a validator capsule — a unified identity layer spanning chains, badges, proofs,
-                and contributor history. Built for sovereignty. Designed for clarity. Anchored across ecosystems.
-            </p>
-            <p>
-                This capsule is the single source of truth for Charm’s presence: on‑chain, off‑chain, and across
-                every network where identity, rewards, and legacy matter.
-            </p>
+### 🔑 Capsule Cycle Legend
 
-            <div class="dashboard-card" id="dashboard">
-                <strong>Contributor Dashboard</strong>
-                <p>
-                    Proof files, rewards, metadata, and capsule logs — structured for long‑term continuity and
-                    contributor clarity.
-                </p>
-                <div class="dashboard-meta">
-                    Phase: Shell active • Views: Owner‑first • Scope: Multi‑chain rewards & proofs
-                </div>
-            </div>
-        </section>
+✅ Verified   → Explorer / exchange proof confirmed  
+⏳ Pending    → Awaiting explorer confirmation, liquidity check, or proposal close  
+❌ Invalid    → Spam / rejected anchor  
 
-        <!-- RIGHT COLUMN -->
-        <section class="card" id="badges">
-            <div class="pill">
-                <span class="pill-dot"></span>
-                <span>Badges & Chains</span>
-            </div>
-            <h2>Badges</h2>
-            <p>Anchored across chains, each badge represents a proof, a role, or a legacy marker.</p>
+---
 
-            <div class="badges-grid">
-                <div class="badge">
-                    <div class="badge-label">Validator</div>
-                    <div class="badge-tag">Core role</div>
-                </div>
-                <div class="badge">
-                    <div class="badge-label">Multi‑Chain</div>
-                    <div class="badge-tag">Cross‑ecosystem</div>
-                </div>
-                <div class="badge">
-                    <div class="badge-label">Contributor</div>
-                    <div class="badge-tag">Rewards & proofs</div>
-                </div>
-                <div class="badge">
-                    <div class="badge-label">Legacy</div>
-                    <div class="badge-tag">Long‑term archive</div>
-                </div>
-                <div class="badge">
-                    <div class="badge-label">Identity</div>
-                    <div class="badge-tag">Sovereign namespace</div>
-                </div>
-            </div>
-        </section>
-    </main>
+## 📊 Reputation Badges — Direct IPFS Links
 
-    <section class="section" id="chains" style="max-width:1080px;margin:0 auto 40px;padding:0 20px;">
-        <div class="card">
-            <div class="pill">
-                <span class="pill-dot"></span>
-                <span>Chain Identities</span>
-            </div>
-            <h2>On‑Chain Anchors</h2>
-            <p>Each address below is a verified anchor in Charm’s validator capsule.</p>
-
-            <div class="chains-grid">
-                <!-- TODO: replace 0x… and explorer links with your real addresses -->
-                <div class="chain">
-                    <div class="chain-row">
-                        <div class="chain-label">Ethereum</div>
-                        <a class="explorer-link" href="#" target="_blank">Explorer</a>
-                    </div>
-                    <div class="chain-address">0xYOUR_ETH_ADDRESS</div>
-                </div>
-
-                <div class="chain">
-                    <div class="chain-row">
-                        <div class="chain-label">BNB Chain</div>
-                        <a class="explorer-link" href="#" target="_blank">Explorer</a>
-                    </div>
-                    <div class="chain-address">0xYOUR_BNB_ADDRESS</div>
-                </div>
-
-                <div class="chain">
-                    <div class="chain-row">
-                        <div class="chain-label">Solana</div>
-                        <a class="explorer-link" href="#" target="_blank">Explorer</a>
-                    </div>
-                    <div class="chain-address">YOUR_SOL_ADDRESS</div>
-                </div>
-
-                <div class="chain">
-                    <div class="chain-row">
-                        <div class="chain-label">Optimism</div>
-                        <a class="explorer-link" href="#" target="_blank">Explorer</a>
-                    </div>
-                    <div class="chain-address">0xYOUR_OP_ADDRESS</div>
-                </div>
-
-                <div class="chain">
-                    <div class="chain-row">
-                        <div class="chain-label">Arbitrum</div>
-                        <a class="explorer-link" href="#" target="_blank">Explorer</a>
-                    </div>
-                    <div class="chain-address">0xYOUR_ARB_ADDRESS</div>
-                </div>
-
-                <div class="chain">
-                    <div class="chain-row">
-                        <div class="chain-label">Base</div>
-                        <a class="explorer-link" href="#" target="_blank">Explorer</a>
-                    </div>
-                    <div class="chain-address">0xYOUR_BASE_ADDRESS</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        © Charm — Validator Capsule • Sovereign Identity Layer • charmcapsule.io
-    </footer>
-
-</body>
-</html>
+| Role        | ID | Badge JSON Link                                                                 | Status Example |
+|-------------|----|----------------------------------------------------------------------------------|----------------|
+| 🕵️ Auditor   | 1  | https://ipfs.io/ipfs/bafkreia7qhvpw6gi57wgx5mq4prpf4gcckp5447dyote3qx6loabx75yv4/1.json | ✅ Verified    |
+| 🛠 Maintainer| 2  | https://ipfs.io/ipfs/bafkreia7qhvpw6gi57wgx5mq4prpf4gcckp5447dyote3qx6loabx75yv4/2.json | ✅ Verified    |
+| 🗳 Voter     | 3  | https://ipfs.io/ipfs/bafkreia7qhvpw6gi57wgx5mq4prpf4gcckp5447dyote3qx6loabx75yv4/3.json | ⏳ Pending     |
+| 📈 Trader    | 4  | https://ipfs.io/ipfs/bafkreia7qhvpw6gi57wgx5mq4prpf4gcckp5447dyote3qx6loabx75yv4/4.json | ✅ Verified    |
 
