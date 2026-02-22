@@ -1,122 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Charm Capsule — Validator Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #050816;
+      color: #e5e7eb;
+      margin: 0;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #020617;
+      border-radius: 12px;
+      padding: 2rem 2.5rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      border: 1px solid #1f2937;
+    }
+    pre.banner {
+      font-family: "Fira Code", "JetBrains Mono", monospace;
+      font-size: 10px;
+      line-height: 1.1;
+      white-space: pre;
+      color: #22c55e;
+      margin-bottom: 1.5rem;
+    }
+    h1, h2, h3 {
+      color: #f9fafb;
+      margin-top: 1.8rem;
+      margin-bottom: 0.6rem;
+    }
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.4rem; }
+    h3 { font-size: 1.1rem; }
+    hr {
+      border: none;
+      border-top: 1px solid #1f2937;
+      margin: 1.5rem 0;
+    }
+    code {
+      background: #020617;
+      padding: 0.1rem 0.3rem;
+      border-radius: 4px;
+      font-family: "Fira Code", monospace;
+    }
+    details {
+      background: #020617;
+      border-radius: 8px;
+      padding: 0.7rem 0.9rem;
+      margin: 0.6rem 0;
+      border: 1px solid #1f2937;
+    }
+    summary {
+      cursor: pointer;
+      font-weight: 600;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.8rem;
+    }
+    th, td {
+      border: 1px solid #1f2937;
+      padding: 0.5rem 0.6rem;
+      font-size: 0.9rem;
+    }
+    th {
+      background: #020617;
+      text-align: left;
+    }
+    .mono {
+      font-family: "Fira Code", monospace;
+      white-space: pre;
+      font-size: 11px;
+      background: #020617;
+      padding: 0.8rem;
+      border-radius: 8px;
+      border: 1px solid #1f2937;
+      overflow-x: auto;
+    }
+    .pill {
+      display: inline-block;
+      padding: 0.1rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      border: 1px solid #374151;
+      background: #020617;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+  <pre style="font-family: monospace; font-size: 12px; line-height: 1.2;">
 ████████╗ █████╗ ███╗   ███╗██╗     ██╗      █████╗ ███████╗████████╗
 ╚══██╔══╝██╔══██╗████╗ ████║██║     ██║     ██╔══██╗██╔════╝╚══██╔══╝
-   ██║   ███████║██╔████╔██║██║     ██║     ███████║███████╗   ██║   
-   ██║   ██╔══██║██║╚██╔╝██║██║     ██║     ██╔══██║╚════██║   ██║   
-   ██║   ██║  ██║██║ ╚═╝ ██║███████╗███████╗██║  ██║███████║   ██║   
-   ╚═╝   ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝   
+   ██║   ███████║██╔████╔██║██║     ██║     ███████║███████╗   ██║
+   ██║   ██╔══██║██║╚██╔╝██║██║     ██║     ██╔══██║╚════██║   ██║
+   ██║   ██║  ██║██║ ╚═╝ ██║███████╗███████╗██║  ██║███████║   ██║
+   ╚═╝   ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝
+</pre>
+   <h1>🌐 Validator Capsule — Proof Driven Sovereignty</h1>
+   <hr />
 
-                 🌐 Validator Capsule — Proof Driven Sovereignty
+   <h2>🚀 Quick Start (5‑Minute Onboarding)</h2>
+   <ol>
+     <li><strong>Choose your role tier</strong> → Auditor 🕵️, Maintainer 🛠, Voter 🗳, Trader 📈</li>
+     <li><strong>Open the right explorer</strong> → TronScan, Solscan, TonScan, Etherscan, OKX, Snapshot, Turtle.xyz, TradeGenius</li>
+     <li><strong>Verify one anchor</strong> → copy transaction hash, contract address, or proposal ID</li>
+     <li><strong>Record proof in ledger</strong> → mark ⏳ Pending → ✅ Verified once confirmed</li>
+     <li><strong>Submit PR</strong> → fork repo, commit changes, include explorer links, request Maintainer review</li>
+   </ol>
 
----
+   <hr />
+   <h2>📖 Overview</h2>
+   <p>
+     This capsule unifies <strong>multi‑chain anchors, governance records, DeFi yield opportunities, and asset audits</strong> into one transparent,
+     proof‑driven dashboard. Every contributor follows the same badge system and workflows, ensuring clarity, trust, and sovereignty.
+   </p>
 
-## 🚀 Quick Start (5‑Minute Onboarding)
-1. **Choose your role tier** → Auditor 🕵️, Maintainer 🛠, Voter 🗳, Trader 📈  
-2. **Open the right explorer** → TronScan, Solscan, TonScan, Etherscan, OKX, Snapshot, Turtle.xyz, TradeGenius  
-3. **Verify one anchor** → copy transaction hash, contract address, or proposal ID  
-4. **Record proof in ledger** → mark ⏳ Pending → ✅ Verified once confirmed  
-5. **Submit PR** → fork repo, commit changes, include explorer links, request Maintainer review  
+   <hr />
+   <h2>🏷️ Badge Legend</h2>
+   <p><span class="pill">✅ Verified</span> <span class="pill">⏳ Pending</span> <span class="pill">❌ Invalid</span></p>
 
----
+   <hr />
+   <h2>🧩 Contributor Role Tiers</h2>
+   <p>Auditor 🕵️ · Maintainer 🛠 · Voter 🗳 · Trader 📈</p>
 
-## 📖 Overview
-This capsule unifies **multi‑chain anchors, governance records, DeFi yield opportunities, and asset audits** into one transparent, proof‑driven dashboard.  
-Every contributor follows the same badge system and workflows, ensuring clarity, trust, and sovereignty.
+   <hr />
+   <h2>🔎 Contributor Workflow Checklists</h2>
 
----
+   <details open>
+     <summary>Anchor Verification Workflow</summary>
+     <ul>
+       <li>Locate anchor (TRON, Solana, TON, ETH, OKX, PiggyDAO, Turtle.xyz, TradeGenius, Mellow Protocol)</li>
+       <li>Verify via explorer</li>
+       <li>Record evidence in capsule ledger</li>
+       <li>Flip badge ⏳ → ✅</li>
+     </ul>
+   </details>
 
-## 🏷️ Badge Legend
+   <details>
+     <summary>Governance Workflow (PiggyDAO)</summary>
+     <ul>
+       <li>Access Snapshot</li>
+       <li>Review proposal</li>
+       <li>Cast vote</li>
+       <li>Record proposal ID + result</li>
+     </ul>
+   </details>
 
----
+   <details>
+     <summary>DeFi Yield Workflow (Turtle.xyz)</summary>
+     <ul>
+       <li>Open vault</li>
+       <li>Check APR + incentives</li>
+       <li>Deposit ETH</li>
+       <li>Record contract + APR</li>
+     </ul>
+   </details>
 
-## 🧩 Contributor Role Tiers
+   <details>
+     <summary>Asset Analysis Workflow (TradeGenius)</summary>
+     <ul>
+       <li>Search asset <code>x402.meme</code></li>
+       <li>Check audit score + liquidity</li>
+       <li>Inspect holder distribution</li>
+       <li>Record in capsule ledger</li>
+     </ul>
+   </details>
 
----
+   <details>
+     <summary>DeFi Vault Workflow (Mellow Protocol tqETH)</summary>
+     <ul>
+       <li>Verify Configurator + Vault contracts</li>
+       <li>Check Fee Manager, Risk Manager, Oracle</li>
+       <li>Confirm final tqETH Vault</li>
+       <li>Record all contracts with ✅ badges</li>
+     </ul>
+   </details>
 
-## 🔎 Contributor Workflow Checklists
+   <details>
+     <summary>Contributor PR Workflow</summary>
+     <ul>
+       <li>Fork repo</li>
+       <li>Update ledger with new anchor</li>
+       <li>Commit changes</li>
+       <li>Submit PR with explorer links</li>
+       <li>Maintainer review → badge flip</li>
+     </ul>
+   </details>
 
-<details>
-<summary>Anchor Verification Workflow</summary>
+   <hr />
+   <h2>🏗️ Proof Layers Map</h2>
+   <ul>
+     <li><strong>TRON, Solana, TON, ETH</strong> → On‑chain anchors</li>
+     <li><strong>OKX</strong> → Centralized exchange anchors</li>
+     <li><strong>PiggyDAO</strong> → Governance anchors</li>
+     <li><strong>Turtle.xyz</strong> → Yield vault (DeFi)</li>
+     <li><strong>TradeGenius</strong> → Asset analysis (<code>x402.meme</code>)</li>
+     <li><strong>Mellow Protocol</strong> → tqETH vault system</li>
+   </ul>
 
-- Locate anchor (TRON, Solana, TON, ETH, OKX, PiggyDAO, Turtle.xyz, TradeGenius, Mellow Protocol)  
-- Verify via explorer  
-- Record evidence in capsule ledger  
-- Flip badge ⏳ → ✅  
+   <hr />
+   <h2>✅ Contribution Guide</h2>
+   <ul>
+     <li>Choose your role tier (Auditor, Maintainer, Voter, Trader)</li>
+     <li>Follow the relevant workflow checklist</li>
+     <li>Record proof in capsule ledger with badge status</li>
+     <li>Submit PR for Maintainer review</li>
+     <li>Capsule remains unified, transparent, and proof‑driven</li>
+   </ul>
 
-</details>
-
-<details>
-<summary>Governance Workflow (PiggyDAO)</summary>
-
-- Access Snapshot  
-- Review proposal  
-- Cast vote  
-- Record proposal ID + result  
-
-</details>
-
-<details>
-<summary>DeFi Yield Workflow (Turtle.xyz)</summary>
-
-- Open vault  
-- Check APR + incentives  
-- Deposit ETH  
-- Record contract + APR  
-
-</details>
-
-<details>
-<summary>Asset Analysis Workflow (TradeGenius)</summary>
-
-- Search asset (`x402.meme`)  
-- Check audit score + liquidity  
-- Inspect holder distribution  
-- Record in capsule ledger  
-
-</details>
-
-<details>
-<summary>DeFi Vault Workflow (Mellow Protocol tqETH)</summary>
-
-- Verify Configurator + Vault contracts  
-- Check Fee Manager, Risk Manager, Oracle  
-- Confirm final tqETH Vault  
-- Record all contracts with ✅ badges  
-
-</details>
-
-<details>
-<summary>Contributor PR Workflow</summary>
-
-- Fork repo  
-- Update ledger with new anchor  
-- Commit changes  
-- Submit PR with explorer links  
-- Maintainer review → badge flip  
-
-</details>
-
----
-
-## 🏗️ Proof Layers Map
-- **TRON, Solana, TON, ETH** → On‑chain anchors  
-- **OKX** → Centralized exchange anchors  
-- **PiggyDAO** → Governance anchors  
-- **Turtle.xyz** → Yield vault (DeFi)  
-- **TradeGenius** → Asset analysis (`x402.meme`)  
-- **Mellow Protocol** → tqETH vault system  
-
----
-
-## ✅ Contribution Guide
-- Choose your role tier (Auditor, Maintainer, Voter, Trader)  
-- Follow the relevant workflow checklist  
-- Record proof in capsule ledger with badge status  
-- Submit PR for Maintainer review  
-- Capsule remains unified, transparent, and proof‑driven  
-
----
-
-## 🔄 ASCII Capsule Cycle with Badge Status
+  <pre class="mono">
   ┌───────────────┐
   │   TRON   ✅   │
   └───────┬───────┘
@@ -152,23 +252,80 @@ Every contributor follows the same badge system and workflows, ensuring clarity,
   ┌───────▼──────────┐
   │ Hyperliquid ❌    │
   └──────────────────┘
+</pre>
+   <h3>🔑 Capsule Cycle Legend</h3>
+   <p>
+     ✅ Verified → Explorer / exchange proof confirmed<br />
+     ⏳ Pending → Awaiting explorer confirmation, liquidity check, or proposal close<br />
+     ❌ Invalid → Spam / rejected anchor
+   </p>
 
----
+   <hr />
+   <h2>📊 Reputation Badges — Direct IPFS Links</h2>
+   <table>
+     <tr>
+       <th>Role</th>
+       <th>ID</th>
+       <th>Badge JSON Link</th>
+       <th>Status Example</th>
+     </tr>
+     <tr>
+       <td>🕵️ Auditor</td>
+       <td>1</td>
+       <td><a href="https://ipfs.io/ipfs/bafkreia7qhvpw6gi57wgx5mq4prpf4gcckp5447dyote3qx6loabx75yv4/1.json" target="_blank">Auditor JSON</a></td>
+       <td>✅ Verified</td>
+     </tr>
+     <tr>
+       <td>🛠 Maintainer</td>
+       <td>2</td>
+       <td><a href="https://ipfs.io/ipfs/bafkreia7qhvpw6gi57wgx5mq4prpf4gcckp5447dyote3qx6loabx75yv4/2.json" target="_blank">Maintainer JSON</a></td>
+       <td>✅ Verified</td>
+     </tr>
+     <tr>
+       <td>🗳 Voter</td>
+       <td>3</td>
+       <td><a href="https://ipfs.io/ipfs/bafkreia7qhvpw6gi57wgx5mq4prpf4gcckp5447dyote3qx6loabx75yv4/3.json" target="_blank">Voter JSON</a></td>
+       <td>⏳ Pending</td>
+     </tr>
+     <tr>
+       <td>📈 Trader</td>
+       <td>4</td>
+       <td><a href="https://ipfs.io/ipfs/bafkreia7qhvpw6gi57wgx5mq4prpf4gcckp5447dyote3qx6loabx75yv4/4.json" target="_blank">Trader JSON</a></td>
+       <td>✅ Verified</td>
+     </tr>
+   </table>
+ </div>
 
-### 🔑 Capsule Cycle Legend
 
-✅ Verified   → Explorer / exchange proof confirmed  
-⏳ Pending    → Awaiting explorer confirmation, liquidity check, or proposal close  
-❌ Invalid    → Spam / rejected anchor  
 
----
 
-## 📊 Reputation Badges — Direct IPFS Links
 
-| Role        | ID | Badge JSON Link                                                                 | Status Example |
-|-------------|----|----------------------------------------------------------------------------------|----------------|
-| 🕵️ Auditor   | 1  | https://ipfs.io/ipfs/bafkreia7qhvpw6gi57wgx5mq4prpf4gcckp5447dyote3qx6loabx75yv4/1.json | ✅ Verified    |
-| 🛠 Maintainer| 2  | https://ipfs.io/ipfs/bafkreia7qhvpw6gi57wgx5mq4prpf4gcckp5447dyote3qx6loabx75yv4/2.json | ✅ Verified    |
-| 🗳 Voter     | 3  | https://ipfs.io/ipfs/bafkreia7qhvpw6gi57wgx5mq4prpf4gcckp5447dyote3qx6loabx75yv4/3.json | ⏳ Pending     |
-| 📈 Trader    | 4  | https://ipfs.io/ipfs/bafkreia7qhvpw6gi57wgx5mq4prpf4gcckp5447dyote3qx6loabx75yv4/4.json | ✅ Verified    |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
