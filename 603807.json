@@ -1,5 +1,105 @@
-"metadata": {
-  "snapshot": 603807,
-  "network": "Base",
-  "status": "Anchored"
+{
+  "metadata": {
+    "snapshot": 603807,
+    "network": "Base",
+    "status": "Anchored"
+  },
+  "transaction": {
+    "hash": "0x1a143c4b4d8ff00a14a7e76d2eb8fff8b9ecc3292a7aa04112c4f212ff1a34f6",
+    "blockNumber": 30803797,
+    "timestamp": "2025-05-28T01:49:01Z"
+  },
+  "orchestrator": {
+    "contract": "0x3e8d5707094422c4c1955209E26834e31Dc1Fd6F",
+    "name": "Thirdweb",
+    "function": "multicall(bytes[] data)",
+    "methodId": "0xac9650d8"
+  },
+  "flows": {
+    "fungibleTokens": [
+      {
+        "event": "Approval",
+        "token": "USDT",
+        "amount": "0.076841",
+        "from": "0xF5042e6f…",
+        "to": "0x000000…22734"
+      },
+      {
+        "event": "Approval",
+        "token": "USDT",
+        "amount": "9.040060",
+        "from": "0xF5042e6f…",
+        "to": "0x000000…22734"
+      },
+      {
+        "event": "SolverCallExecuted",
+        "fromToken": "USDT",
+        "fromAmount": "8.963219",
+        "toToken": "WETH",
+        "toAmount": "0"
+      },
+      {
+        "event": "Transfer",
+        "token": "USDT",
+        "amount": "0.076841",
+        "to": "0xf70da9…"
+      },
+      {
+        "event": "Transfer",
+        "token": "USDT",
+        "amount": "8.963219",
+        "to": "0x526d54…"
+      },
+      {
+        "event": "Transfer",
+        "token": "WETH",
+        "amount": "0.002940556707151654",
+        "to": "0xEA758C…"
+      },
+      {
+        "event": "Swap",
+        "fromToken": "USDT",
+        "fromAmount": "8.963219",
+        "toToken": "WETH",
+        "toAmount": "0.002940556707151654",
+        "fee": "0.000295"
+      },
+      {
+        "event": "Withdrawal",
+        "from": "WETH",
+        "to": "ETH",
+        "amount": "0.002940556707151654"
+      },
+      {
+        "event": "SolverNativeTransfer",
+        "token": "ETH",
+        "amount": "0.002940556707151654",
+        "to": "0xF5042e6f…"
+      },
+      {
+        "event": "SolverNativeTransfer",
+        "token": "ETH",
+        "amount": "0.002940556707151654",
+        "to": "0x2B93FD3D…"
+      },
+      {
+        "event": "SolverCallExecuted",
+        "recipient": "0x2B93FD3D…"
+      }
+    ],
+    "nftTransfers": [
+      {
+        "event": "Transfer",
+        "collection": "SHIBA VOUCHER",
+        "tokenId": "345",
+        "from": "0xcec2500B…"
+      }
+    ]
+  },
+  "summary": {
+    "totalUsdtSwapped": "8.963219",
+    "totalEthReceived": "0.002940556707151654",
+    "nftTransfers": 1,
+    "status": "success"
+  }
 }
