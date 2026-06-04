@@ -19,40 +19,65 @@
   <meta name="theme-color" content="#050816" />
 
   <style>
+    :root {
+      color-scheme: dark light;
+      --bg: #050816;
+      --fg: #e5e7eb;
+    }
+    [data-theme="light"] {
+      --bg: #f9fafb;
+      --fg: #020617;
+    }
+
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #050816;
-      color: #e5e7eb;
+      background: var(--bg);
+      color: var(--fg);
       margin: 0;
       padding: 2rem;
       line-height: 1.6;
+      transition: background 0.2s ease, color 0.2s ease;
     }
-    .container {
-      max-width: 900px;
-      margin: auto;
+
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.8);
+      color: #e5e7eb;
+      cursor: pointer;
+      font-size: 12px;
     }
+
     .pill {
       padding: 4px 10px;
       background: #1f2937;
       border-radius: 6px;
       margin-right: 6px;
     }
+
     pre.mono {
       background: #0a0f1a;
       padding: 1rem;
       border-radius: 8px;
       overflow-x: auto;
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 1rem;
     }
+
     th, td {
       border: 1px solid #374151;
       padding: 8px;
       text-align: left;
     }
+
     th {
       background: #111827;
     }
@@ -60,8 +85,9 @@
 </head>
 
 <body>
-  <div class="container">
+  <button class="theme-toggle" id="themeToggle">dark</button>
 
+  <div class="container">
 <pre style="font-family: monospace; font-size: 12px; line-height: 1.2;">
 ████████╗ █████╗ ███╗   ███╗██╗     ██╗      █████╗ ███████╗████████╗
 ╚══██╔══╝██╔══██╗████╗ ████║██║     ██║     ██╔══██╗██╔════╝╚══██╔══╝
@@ -209,6 +235,33 @@
   </tr>
 </table>
 
-</div>
+  </div>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const btn = document.getElementById('themeToggle');
+      const stored = localStorage.getItem('cc-theme');
+
+      if (stored === 'light') {
+        root.setAttribute('data-theme', 'light');
+        btn.textContent = 'light';
+      }
+
+      btn.addEventListener('click', () => {
+        const isLight = root.getAttribute('data-theme') === 'light';
+        if (isLight) {
+          root.removeAttribute('data-theme');
+          localStorage.setItem('cc-theme', 'dark');
+          btn.textContent = 'dark';
+        } else {
+          root.setAttribute('data-theme', 'light');
+          localStorage.setItem('cc-theme', 'light');
+          btn.textContent = 'light';
+        }
+      });
+    })();
+  </script>
+
 </body>
 </html>
