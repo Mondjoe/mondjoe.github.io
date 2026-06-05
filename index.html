@@ -46,6 +46,54 @@
       height: 100vh;
       text-align: center;
     }
+   <script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/sw.js");
+
+    navigator.serviceWorker.addEventListener("message", (event) => {
+      if (event.data && event.data.type === "NEW_VERSION") {
+        showUpdatePopup();
+      }
+    });
+  }
+
+  function showUpdatePopup() {
+    const box = document.createElement("div");
+    box.style.position = "fixed";
+    box.style.bottom = "20px";
+    box.style.left = "50%";
+    box.style.transform = "translateX(-50%)";
+    box.style.background = "#111";
+    box.style.color = "#fff";
+    box.style.padding = "14px 20px";
+    box.style.borderRadius = "8px";
+    box.style.fontFamily = "Inter, sans-serif";
+    box.style.boxShadow = "0 0 12px rgba(255,255,255,0.15)";
+    box.style.zIndex = "9999";
+    box.style.textAlign = "center";
+    box.style.fontSize = "15px";
+    box.style.opacity = "0.95";
+
+    box.innerHTML = `
+      New version available — <strong>Refresh?</strong>
+      <button id="refreshBtn" style="
+        margin-left: 10px;
+        padding: 6px 12px;
+        background: #fff;
+        color: #000;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      ">Refresh</button>
+    `;
+
+    document.body.appendChild(box);
+
+    document.getElementById("refreshBtn").onclick = () => {
+      location.reload(true);
+    };
+  }
+</script>
 
     .container {
       max-width: 600px;
