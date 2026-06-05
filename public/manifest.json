@@ -1,18 +1,19 @@
-{
-  "name": "Charm Capsule",
-  "short_name": "Charm",
-  "description": "Proof‑Driven Governance • Multi‑Chain Capsule",
-  "start_url": "/",
-  "scope": "/",
-  "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#000000",
-  "theme_color": "#0b0c10",
-  "icons": [
-    {
-      "src": "/favicon.ico",
-      "sizes": "512x512",
-      "type": "image/x-icon"
-    }
-  ]
-}
+"icons": [
+  {
+    "src": "/favicon.ico",
+    "sizes": "512x512",
+    "type": "image/x-icon"
+  },
+  {
+    "src": "/Assets/splash-1024.png",
+    "sizes": "1024x1024",
+    "type": "image/png",
+    "purpose": "any"
+  },
+  {
+    "src": "/Assets/splash-2048.png",
+    "sizes": "2048x2048",
+    "type": "image/png",
+    "purpose": "maskable"
+  }
+]
