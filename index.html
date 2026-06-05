@@ -2,165 +2,88 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Charm Capsule — Validator Dashboard</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta property="og:title" content="Charm Capsule — Validator Sovereignty" />
-  <meta property="og:description" content="Proof-driven governance, validator capsule, and sovereign ledger architecture." />
-  <meta property="og:image" content="./Assets/og-image.png" />
-  <meta property="og:url" content="https://charmcapsule.io" />
-  <meta property="og:type" content="website" /> 
-  
-  <meta name="title" content="Charm Capsule — Validator Sovereignty Dashboard" />
-  <meta name="description" content="A unified, proof-driven validator capsule for multi-chain anchors, governance records, DeFi yield workflows, and asset audits." />
-  <meta name="keywords" content="validator dashboard, governance, multi-chain anchors, DeFi, TRON, Solana, TON, Ethereum, OKX, PiggyDAO, Turtle.xyz, TradeGenius, Mellow Protocol, tqETH" />
-  <meta name="author" content="Charm Capsule" />
-  <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#050816" />
+  <title>Charm Capsule</title>
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+  <!-- Manifest -->
+  <link rel="manifest" href="/manifest.json" />
+
+  <!-- Theme Colors -->
+  <meta name="theme-color" content="#0b0c10" />
+  <meta name="background-color" content="#000000" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Charm Capsule" />
+  <meta property="og:description" content="Proof‑Driven Governance • Multi‑Chain Capsule" />
+  <meta property="og:image" content="/Assets/og-image.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mondjoe.github.io" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Charm Capsule" />
+  <meta name="twitter:description" content="Proof‑Driven Governance • Multi‑Chain Capsule" />
+  <meta name="twitter:image" content="/Assets/og-image.png" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
   <style>
-    :root {
-      color-scheme: dark light;
-      --bg: #050816;
-      --fg: #e5e7eb;
-    }
-    [data-theme="light"] {
-      --bg: #f9fafb;
-      --fg: #020617;
-    }
-
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--fg);
       margin: 0;
-      padding: 2rem;
+      padding: 0;
+      background: #000;
+      color: #fff;
+      font-family: "Inter", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 600px;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      opacity: 0.8;
       line-height: 1.6;
-      transition: background 0.2s ease, color 0.2s ease;
     }
 
-    .theme-toggle {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      padding: 0.4rem 0.8rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.6);
-      background: rgba(15,23,42,0.8);
-      color: #e5e7eb;
-      cursor: pointer;
-      font-size: 12px;
-    }
-
-    .pill {
-      padding: 4px 10px;
-      background: #1f2937;
-      border-radius: 6px;
-      margin-right: 6px;
-    }
-
-    pre.mono {
-      background: #0a0f1a;
-      padding: 1rem;
-      border-radius: 8px;
-      overflow-x: auto;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1rem;
-    }
-
-    th, td {
-      border: 1px solid #374151;
-      padding: 8px;
-      text-align: left;
-    }
-
-    th {
-      background: #111827;
+    .moon {
+      width: 160px;
+      height: auto;
+      margin-bottom: 25px;
     }
   </style>
 </head>
 
 <body>
-  <button class="theme-toggle" id="themeToggle">dark</button>
+  <div class="container">
+    <img src="/Assets/og-image.png" alt="Charm Capsule Moon Symbol" class="moon" />
+    <h1>Charm Capsule</h1>
+    <p>Proof‑Driven Governance • Multi‑Chain Capsule</p>
+  </div>
 
-  <pre class="mono" style="font-size: 12px; line-height: 1.2;">
-████████╗ █████╗ ███╗   ███╗██╗     ██╗      █████╗ ███████╗████████╗
-╚══██╔══╝██╔══██╗████╗ ████║██║     ██║     ██╔══██╗██╔════╝╚══██╔══╝
-   ██║   ███████║██╔████╔██║██║     ██║     ███████║███████╗   ██║
-   ██║   ██╔══██║██║╚██╔╝██║██║     ██║     ██╔══██║╚════██║   ██║
-   ██║   ██║  ██║██║ ╚═╝ ██║███████╗███████╗██║  ██║███████║   ██║
-   ╚═╝   ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝
-  </pre>
-
-  <h1>🌐 Validator Capsule — Proof Driven Sovereignty</h1>
-  <hr />
-
-  <h2>🚀 Quick Start (5‑Minute Onboarding)</h2>
-  <ol>
-    <li><strong>Choose your role tier</strong> → Auditor 🕵️, Maintainer 🛠, Voter 🗳, Trader 📈</li>
-    <li><strong>Open the right explorer</strong> → TronScan, Solscan, TonScan, Etherscan, OKX, Snapshot, Turtle.xyz, TradeGenius</li>
-    <li><strong>Verify one anchor</strong> → copy transaction hash, contract address, or proposal ID</li>
-    <li><strong>Record proof in ledger</strong> → mark ⏳ Pending → ✅ Verified once confirmed</li>
-    <li><strong>Submit PR</strong> → fork repo, commit changes, include explorer links, request Maintainer review</li>
-  </ol>
-
-  <hr />
-  <h2>📖 Overview</h2>
-  <p>
-    This capsule unifies <strong>multi‑chain anchors, governance records, DeFi yield opportunities, and asset audits</strong> into one transparent,
-    proof‑driven dashboard. Every contributor follows the same badge system and workflows, ensuring clarity, trust, and sovereignty.
-  </p>
-
-  <h2>📁 Snapshot Records</h2>
-  <ul>
-    <li>
-      Snapshot 930187 —
-      <a href="validator-viewer/?id=930187">Open Viewer</a>
-    </li>
-    <li>
-      Snapshot 603807 —
-      <a href="validator-viewer/?id=603807">Open Viewer</a>
-    </li>
-  </ul>
-
-  <hr />
-  <h2>🏷️ Badge Legend</h2>
-  <p>
-    <span class="pill">✅ Verified</span>
-    <span class="pill">⏳ Pending</span>
-    <span class="pill">❌ Invalid</span>
-  </p>
-
-  <!-- (rest of your sections can continue here as needed) -->
-
+  <!-- PWA Service Worker -->
   <script>
-    (function () {
-      const root = document.documentElement;
-      const btn = document.getElementById('themeToggle');
-      const stored = localStorage.getItem('cc-theme');
-
-      if (stored === 'light') {
-        root.setAttribute('data-theme', 'light');
-        btn.textContent = 'light';
-      }
-
-      btn.addEventListener('click', () => {
-        const isLight = root.getAttribute('data-theme') === 'light';
-        if (isLight) {
-          root.removeAttribute('data-theme');
-          localStorage.setItem('cc-theme', 'dark');
-          btn.textContent = 'dark';
-        } else {
-          root.setAttribute('data-theme', 'light');
-          localStorage.setItem('cc-theme', 'light');
-          btn.textContent = 'light';
-        }
-      });
-    })();
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js");
+    }
   </script>
 </body>
 </html>
