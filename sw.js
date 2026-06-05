@@ -7,8 +7,16 @@ self.addEventListener("install", (event) => {
   self.skipWaiting();
 });
 
-self.addEventListener("activate", () => {
-  clients.claim();
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    clients.claim().then(() => {
+      return self.clients.matchAll({ type: "window" }).then((clients) => {
+        clients.forEach((client) => {
+          client.postMessage({ type: "NEW_VERSION" });
+        });
+      });
+    })
+  );
 });
 
 self.addEventListener("fetch", (event) => {
