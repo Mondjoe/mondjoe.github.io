@@ -9,45 +9,117 @@
   <link rel="stylesheet" href="/dashboard.css" />
   <link rel="stylesheet" href="/snapshot.css" />
   <link rel="icon" href="/favicon.ico" />
+
+  <style>
+    /* Hero animations */
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .hero {
+      text-align: center;
+      padding: 4rem 1.5rem;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+      animation: fadeUp 1s ease forwards;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.85;
+      max-width: 600px;
+      margin: 0 auto;
+      animation: fadeUp 1.4s ease forwards;
+    }
+
+    .hero-buttons {
+      margin-top: 2rem;
+      animation: fadeUp 1.8s ease forwards;
+    }
+
+    .hero-buttons .snapshot-btn {
+      margin: 0.4rem;
+      padding: 0.7rem 1.2rem;
+      font-size: 1rem;
+    }
+
+    /* Section headers */
+    .section-title {
+      text-align: center;
+      margin-top: 3rem;
+      margin-bottom: 1.5rem;
+      font-size: 1.6rem;
+      color: var(--accent);
+      animation: fadeUp 1.2s ease forwards;
+    }
+  </style>
 </head>
 
 <body>
 
+  <!-- HERO SECTION -->
+  <div class="hero">
+    <h1>Charm Capsule</h1>
+    <p>
+      A sovereign multi‑chain governance and identity system —  
+      designed for clarity, permanence, and absolute control.
+    </p>
+
+    <div class="hero-buttons">
+      <button class="snapshot-btn" onclick="router.navigate('#/')">
+        Enter Dashboard
+      </button>
+      <button class="snapshot-btn" onclick="router.navigate('#/capsule')">
+        View Capsule Identity
+      </button>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <h2 class="section-title">Core Modules</h2>
+
   <div class="snapshot-list">
-    <div class="snapshot-card" style="text-align:center;">
-      <h1>Charm Capsule</h1>
-      <p>Your sovereign multi‑chain governance and identity system.</p>
 
-      <div style="margin-top:1.5rem;">
-        <button class="snapshot-btn" onclick="router.navigate('#/')">
-          Enter Dashboard
-        </button>
-      </div>
+    <div class="snapshot-card">
+      <h2>📡 Multi‑Chain Snapshots</h2>
+      <p>Unified snapshots across Base, Ethereum, Solana, TON, Tron, Bitcoin, and BNB.</p>
+      <button class="snapshot-btn" onclick="router.navigate('#/snapshots')">View Snapshots</button>
     </div>
 
     <div class="snapshot-card">
-      <h2>What is Charm Capsule?</h2>
-      <p>
-        A unified sovereign environment for:
-      </p>
-
-      <ul style="margin-top:1rem; line-height:1.7;">
-        <li>📡 Multi‑chain snapshots</li>
-        <li>🗳 Governance proposals & rules</li>
-        <li>🔗 Chain metadata & validators</li>
-        <li>📦 Capsule identity & sovereignty model</li>
-        <li>📱 Offline‑first PWA architecture</li>
-      </ul>
+      <h2>🗳 Governance Engine</h2>
+      <p>Proposals, rules, metadata, and sovereign decision flows.</p>
+      <button class="snapshot-btn" onclick="router.navigate('#/governance')">Open Governance</button>
     </div>
 
     <div class="snapshot-card">
-      <h2>Quick Navigation</h2>
-      <button class="snapshot-btn" onclick="router.navigate('#/snapshots')">Snapshots</button>
-      <button class="snapshot-btn" onclick="router.navigate('#/governance')">Governance</button>
-      <button class="snapshot-btn" onclick="router.navigate('#/capsule')">Capsule Identity</button>
-      <button class="snapshot-btn" onclick="window.location.href='/settings.html'">Settings</button>
-      <button class="snapshot-btn" onclick="window.location.href='/about.html'">About</button>
+      <h2>🔗 Capsule Identity</h2>
+      <p>Chain metadata, validators, sovereignty model, and capsule manifest.</p>
+      <button class="snapshot-btn" onclick="router.navigate('#/capsule')">Identity Viewer</button>
     </div>
+
+    <div class="snapshot-card">
+      <h2>⚙ Settings</h2>
+      <p>Theme, cache controls, and PWA preferences.</p>
+      <button class="snapshot-btn" onclick="window.location.href='/settings.html'">Open Settings</button>
+    </div>
+
+    <div class="snapshot-card">
+      <h2>ℹ About</h2>
+      <p>Learn more about the philosophy and architecture of the capsule.</p>
+      <button class="snapshot-btn" onclick="window.location.href='/about.html'">About Page</button>
+    </div>
+
   </div>
 
   <script src="/router.js"></script>
