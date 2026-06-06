@@ -1,107 +1,141 @@
-# 🌙 Charm Capsule  
-**Proof‑Driven Governance • Multi‑Chain Capsule**
+🌐 Charm Capsule — Validator Sovereignty Dashboard
+Proof‑Driven Governance • Multi‑Chain Capsule Architecture
 
-Charm Capsule is a minimal, identity‑driven, PWA‑enabled web application designed to deliver a clean, sovereign, moon‑lit interface for governance, identity, and capsule‑based workflows.
+Charm Capsule is a modular, sovereign governance layer designed for validators, operators, and multi‑chain contributors who require verifiable control, transparent snapshots, and portable governance records across ecosystems.
 
-This repository powers the live site:
+This repository contains the public dashboard, snapshot registry, and capsule metadata that define the validator’s governance identity.
 
-👉 **https://mondjoe.github.io**
+🧭 Purpose
+Charm Capsule provides:
 
----
+A sovereign validator identity anchored across chains
 
-## ✨ Features
+A public governance dashboard for transparency
 
-### **🌙 Moon Identity Branding**
-- Abstract moon‑glow symbol  
-- OG image for social previews  
-- Favicon + app icon  
-- Full dark‑theme aesthetic  
+A snapshot registry for proof‑driven decision flows
 
-### **📱 Progressive Web App (PWA)**
-- Installable on mobile & desktop  
-- Offline fallback page  
-- Auto‑update popup  
-- Standalone app mode  
-- Splash screens for iOS & Android  
+A capsule metadata layer for long‑term governance continuity
 
-### **🔗 Multi‑Chain Governance Theme**
-- Designed for modular governance dashboards  
-- Capsule‑based identity  
-- Future‑ready for validator dashboards & proposal tracking  
+A multi‑page PWA that works offline, updates automatically, and installs as an app
 
----
+This is the canonical source of truth for the validator’s governance footprint.
 
-## 📁 Project Structure
-mondjoe.github.io/
-│
-├── index.html          # Main site + PWA registration
-├── manifest.json       # App metadata + icons
-├── sw.js               # Service worker (offline + updates)
-├── offline.html        # Offline fallback page
-├── favicon.ico         # App icon
-└── Assets/
-├── og-image.png    # Social preview image
-├── splash-512.png
-├── splash-1024.png
-└── splash-2048.png
+🗂️ Repository Structure
+Code
+Charm-validator-DB/
+├── index.html
+├── dashboard.html
+├── about.html
+├── settings.html
+├── offline.html
+├── sw.js
+├── manifest.json
+├── dashboard.js
+├── router.js
+├── Assets/
+│   ├── og-image.png
+│   ├── favicon-32.png
+│   ├── favicon-192.png
+│   ├── splash-1024.png
+│   └── splash-2048.png
+└── README.md
+Key Components
+index.html — Landing page + PWA entry
 
----
+dashboard.html — Validator viewer, snapshots, governance
 
-## 🚀 Deployment
+settings.html — Cache control, theme, PWA settings
 
-This site is deployed automatically via **GitHub Pages**.
+offline.html — Offline fallback
 
-No build step.  
-No framework.  
-Pure static hosting.
+sw.js — Multi‑page service worker (offline + updates)
 
----
+router.js — Optional SPA navigation
 
-## 📦 PWA Installation
+dashboard.js — Future validator viewer engine
 
-### **Desktop**
-1. Open the site  
-2. Click “Install App” in the browser bar  
+Assets/ — Icons, splash screens, branding
 
-### **Mobile**
-- **iPhone:** Share → Add to Home Screen  
-- **Android:** Chrome menu → Add to Home Screen  
+🔮 Sovereignty Principles
+Charm Capsule is built on three core principles:
 
----
+1. Proof Over Trust
+Every governance action must be anchored in verifiable data — snapshots, signatures, or chain‑level proofs.
 
-## 🌓 Offline Support
+2. Portability Over Lock‑In
+The capsule must survive migrations, forks, chain failures, and platform changes.
 
-If the device is offline, the site displays:
+3. Transparency Over Ambiguity
+All governance‑relevant information must be publicly accessible, timestamped, and immutable.
 
+📦 Snapshot Registry
+Snapshots define the validator’s governance state at specific points in time.
 
-This ensures a smooth experience even without network access.
+Each snapshot includes:
 
----
+Chain
 
-## 🔄 Auto‑Update System
+Height / Epoch
 
-When a new version is deployed:
+Validator state
 
-- The service worker activates  
-- The site receives a message  
-- A popup appears:  
-  **“New version available — Refresh?”**
+Governance stance
 
----
+Metadata hash
 
-## 🛠 Technologies Used
+Timestamp
 
-- HTML5  
-- CSS3  
-- JavaScript  
-- Service Workers  
-- Web App Manifest  
-- GitHub Pages  
+Snapshots are stored in /metadata/ or an external registry depending on chain requirements.
 
----
+🛠️ PWA Architecture
+Charm Capsule is a multi‑page PWA with:
 
-## © Charm Capsule
+Offline support
 
-Crafted with a moonlit identity.  
-Designed for clarity in darkness.  
-Sovereign. Minimal. Future‑ready.
+Auto‑update popup
+
+Installable app mode
+
+SPA‑style navigation (optional)
+
+GitHub Pages compatibility
+
+Core PWA Files
+manifest.json — Identity, icons, splash screens
+
+sw.js — Offline caching + update notifications
+
+offline.html — Elegant offline fallback
+
+🧩 Modules
+Validator Viewer
+Displays validator status, uptime, chain anchors, and metadata.
+
+Snapshot Explorer
+Shows historical governance snapshots.
+
+Governance Capsule
+Tracks proposals, votes, and decision flows.
+
+Settings
+Cache control, theme toggles, PWA preferences.
+
+🚀 Roadmap
+Multi‑chain validator ingestion
+
+Snapshot anchoring
+
+Governance capsule engine
+
+Real‑time alerts
+
+Exportable governance proofs
+
+Capsule signing module
+
+🖋️ Sovereign Signature
+Code
+╔══════════════════════════════════╗
+║   Charm Capsule — Validator DB   ║
+║   Proof‑Driven Governance Layer  ║
+╚══════════════════════════════════╝
