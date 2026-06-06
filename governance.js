@@ -1,159 +1,172 @@
-// -------------------------------------------
-// Charm Capsule — Governance Engine Foundation
-// Proposal registry, states, filters, storage
-// -------------------------------------------
+/* -----------------------------------------------------------
+   Charm Capsule — Governance Engine
+   File: governance.js
+   Purpose: Load proposals, templates, and render governance UI
+----------------------------------------------------------- */
 
-// Basic proposal shape:
-//
-// {
-//   id: "prop-001",
-//   title: "Increase validator commission to 7%",
-//   description: "Rationale, impact, and constraints...",
-//   chain: "cosmos-hub",
-//   status: "active" | "passed" | "rejected" | "withdrawn",
-//   createdAt: "2025-01-01T12:00:00Z",
-//   snapshotId: "snap-001",
-//   metadataHash: "0x...",
-//   tags: ["commission", "economics"]
-// }
-
-const GOVERNANCE_STORAGE_KEY = "charm-governance-proposals";
-
-// In‑memory cache
-let proposals = [];
-
-// Load from localStorage
-function loadProposalsFromStorage() {
-  try {
-    const raw = localStorage.getItem(GOVERNANCE_STORAGE_KEY);
-    if (!raw) return [];
-    const parsed = JSON.parse(raw);
-    if (!Array.isArray(parsed)) return [];
-    return parsed;
-  } catch (e) {
-    console.error("Failed to load proposals from storage:", e);
-    return [];
-  }
-}
-
-// Save to localStorage
-function saveProposalsToStorage() {
-  try {
-    localStorage.setItem(GOVERNANCE_STORAGE_KEY, JSON.stringify(proposals));
-  } catch (e) {
-    console.error("Failed to save proposals to storage:", e);
-  }
-}
-
-// Initialize with storage or empty
-function initGovernance() {
-  proposals = loadProposalsFromStorage();
-}
-
-// Create a new proposal (local only for now)
-function createProposal(data) {
-  const id = data.id || `prop-${Date.now()}`;
-  const now = new Date().toISOString();
-
-  const proposal = {
-    id,
-    title: data.title || "Untitled proposal",
-    description: data.description || "",
-    chain: data.chain || "multi-chain",
-    status: data.status || "active",
-    createdAt: data.createdAt || now,
-    snapshotId: data.snapshotId || null,
-    metadataHash: data.metadataHash || null,
-    tags: Array.isArray(data.tags) ? data.tags : []
+(function () {
+  const GOVERNANCE_CONFIG = {
+    proposalsUrl: 'metadata/governance/proposals.json',
+    templatesUrl: 'metadata/governance/proposal-templates.json',
+    capsuleManifestUrl: 'metadata/governance/capsule-manifest.json'
   };
 
-  proposals.push(proposal);
-  saveProposalsToStorage();
-  return proposal;
-}
+  let state = {
+    proposals: [],
+    templates: [],
+    manifest: null,
+    filter: 'all'
+  };
 
-// Update proposal status
-function updateProposalStatus(id, status) {
-  const allowed = ["active", "passed", "rejected", "withdrawn"];
-  if (!allowed.includes(status)) {
-    console.warn("Invalid status:", status);
-    return null;
+  // --------- Fetch helpers ---------
+
+  async function fetchJson(url) {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`Failed to load ${url}`);
+    return res.json();
   }
 
-  const p = proposals.find((x) => x.id === id);
-  if (!p) return null;
-
-  p.status = status;
-  saveProposalsToStorage();
-  return p;
-}
-
-// Get all proposals
-function getAllProposals() {
-  return [...proposals].sort((a, b) => {
-    return new Date(b.createdAt) - new Date(a.createdAt);
-  });
-}
-
-// Filter by status
-function getProposalsByStatus(status) {
-  return getAllProposals().filter((p) => p.status === status);
-}
-
-// Filter by chain
-function getProposalsByChain(chain) {
-  return getAllProposals().filter((p) => p.chain === chain);
-}
-
-// Filter by tag
-function getProposalsByTag(tag) {
-  return getAllProposals().filter((p) => p.tags.includes(tag));
-}
-
-// Render into a simple container (optional UI hook)
-function renderProposals(containerSelector) {
-  const container = document.querySelector(containerSelector);
-  if (!container) {
-    console.warn("Governance container not found:", containerSelector);
-    return;
+  async function loadGovernanceData() {
+    const [proposals, templates, manifest] = await Promise.all([
+      fetchJson(GOVERNANCE_CONFIG.proposalsUrl),
+      fetchJson(GOVERNANCE_CONFIG.templatesUrl),
+      fetchJson(GOVERNANCE_CONFIG.capsuleManifestUrl)
+    ]);
+    state.proposals = proposals;
+    state.templates = templates;
+    state.manifest = manifest;
   }
 
-  const list = getAllProposals();
+  // --------- Rendering ---------
 
-  if (list.length === 0) {
-    container.innerHTML = `<p>No proposals registered yet.</p>`;
-    return;
+  function renderGovernanceRoot() {
+    const el = document.getElementById('governance-container');
+    if (!el) return;
+
+    el.innerHTML = `
+      <div class="snapshot-card">
+        <h2>Governance Capsule</h2>
+        <p>${state.manifest?.capsule || 'Charm Capsule'} — ${state.manifest?.module || 'Governance'} v${state.manifest?.version || '1.0.0'}</p>
+      </div>
+
+      <div class="snapshot-card">
+        <h2>Proposals</h2>
+        <div class="snapshot-actions">
+          <button class="snapshot-btn" data-filter="all">All</button>
+          <button class="snapshot-btn" data-filter="active">Active</button>
+          <button class="snapshot-btn" data-filter="passed">Passed</button>
+          <button class="snapshot-btn" data-filter="rejected">Rejected</button>
+        </div>
+        <div id="proposal-list"></div>
+      </div>
+
+      <div class="snapshot-card">
+        <h2>Templates</h2>
+        <div id="template-list"></div>
+      </div>
+    `;
+
+    attachFilterHandlers();
+    renderProposalList();
+    renderTemplateList();
   }
 
-  container.innerHTML = list
-    .map((p) => {
-      return `
-        <div class="gov-proposal">
-          <h3>${p.title}</h3>
-          <p><strong>Status:</strong> ${p.status} • <strong>Chain:</strong> ${p.chain}</p>
-          <p>${p.description || ""}</p>
-          <p style="opacity:0.7;font-size:13px;">
-            ID: ${p.id} • Snapshot: ${p.snapshotId || "none"} • Created: ${p.createdAt}
-          </p>
+  function attachFilterHandlers() {
+    const el = document.getElementById('governance-container');
+    el.querySelectorAll('.snapshot-btn[data-filter]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        state.filter = btn.getAttribute('data-filter');
+        renderProposalList();
+      });
+    });
+  }
+
+  function renderProposalList() {
+    const listEl = document.getElementById('proposal-list');
+    if (!listEl) return;
+
+    const proposals = state.proposals.filter(p => {
+      if (state.filter === 'all') return true;
+      return p.status === state.filter;
+    });
+
+    if (!proposals.length) {
+      listEl.innerHTML = `<p>No proposals found for filter: <strong>${state.filter}</strong>.</p>`;
+      return;
+    }
+
+    listEl.innerHTML = proposals
+      .map(p => {
+        const snapshotLabel = p.snapshot ? `Snapshot: ${p.snapshot}` : 'Snapshot: pending';
+        const hashLabel = p.metadata_hash || 'No metadata hash';
+        return `
+          <div class="snapshot-card">
+            <h2>${p.title}</h2>
+            <div class="snapshot-meta">
+              <div>ID: ${p.id}</div>
+              <div>Chain: ${p.chain}</div>
+              <div>Status: ${p.status}</div>
+              <div>${snapshotLabel}</div>
+              <div>Metadata hash: ${hashLabel}</div>
+              <div>Created: ${p.created_at}</div>
+              <div>Tags: ${(p.tags || []).join(', ')}</div>
+            </div>
+          </div>
+        `;
+      })
+      .join('');
+  }
+
+  function renderTemplateList() {
+    const listEl = document.getElementById('template-list');
+    if (!listEl) return;
+
+    if (!state.templates.length) {
+      listEl.innerHTML = `<p>No templates defined.</p>`;
+      return;
+    }
+
+    listEl.innerHTML = state.templates
+      .map(t => {
+        return `
+          <div class="snapshot-card">
+            <h2>${t.title}</h2>
+            <div class="snapshot-meta">
+              <div>Template ID: ${t.template_id}</div>
+              <div>Description: ${t.description}</div>
+              <div>Default chain: ${t.default_chain}</div>
+              <div>Required fields: ${(t.required_fields || []).join(', ')}</div>
+              <div>Tags: ${(t.tags || []).join(', ')}</div>
+            </div>
+          </div>
+        `;
+      })
+      .join('');
+  }
+
+  // --------- Public entrypoint ---------
+
+  window.loadGovernance = async function () {
+    const container = document.getElementById('governance-container');
+    if (!container) return;
+
+    container.innerHTML = `
+      <div class="snapshot-card">
+        <h2>Loading governance data…</h2>
+        <p>Please wait.</p>
+      </div>
+    `;
+
+    try {
+      await loadGovernanceData();
+      renderGovernanceRoot();
+    } catch (err) {
+      container.innerHTML = `
+        <div class="error-box">
+          <strong>Failed to load governance data.</strong><br>
+          ${err.message}
         </div>
       `;
-    })
-    .join("");
-}
-
-// Auto‑init on load
-document.addEventListener("DOMContentLoaded", () => {
-  initGovernance();
-});
-
-// Expose API globally (optional)
-window.CharmGovernance = {
-  initGovernance,
-  createProposal,
-  updateProposalStatus,
-  getAllProposals,
-  getProposalsByStatus,
-  getProposalsByChain,
-  getProposalsByTag,
-  renderProposals
-};
+    }
+  };
+})();
