@@ -1,0 +1,47 @@
+{
+  "chain": "Base",
+  "chain_id": "8453",
+  "network_type": "L2",
+  "ecosystem": "Ethereum",
+  "sovereignty": {
+    "visibility": "visible",
+    "receivability": "receivable",
+    "authority": "sovereign",
+    "anchoring": "enabled"
+  },
+  "rpc": {
+    "primary": "https://mainnet.base.org",
+    "fallback": "https://base.blockpi.network/v1/rpc/public",
+    "archive": "https://base-mainnet.public.blastapi.io"
+  },
+  "explorers": {
+    "base_scan": "https://basescan.org",
+    "l2scan": "https://l2scan.co/base"
+  },
+  "governance": {
+    "proposal_rules": "metadata/governance/capsule-manifest.json",
+    "snapshot_registry": "metadata/snapshots/snapshot-list.json"
+  },
+  "validators": [
+    {
+      "id": "930187",
+      "metadata": "metadata/validators/930187.json"
+    },
+    {
+      "id": "603807",
+      "metadata": "metadata/validators/603807.json"
+    }
+  ],
+  "snapshot_format": {
+    "html": true,
+    "json": true,
+    "required_fields": [
+      "id",
+      "network",
+      "status",
+      "timestamp"
+    ]
+  },
+  "metadata_hash": "0xB453000000000000000000000000000000000000000000000000000000000001",
+  "updated": "2026-06-06T09:17:00Z"
+}
