@@ -1,0 +1,51 @@
+{
+  "capsule": "Charm Capsule",
+  "module": "Governance",
+  "version": "1.0.0",
+  "owner": "Charm",
+  "sovereignty": {
+    "visibility": "visible",
+    "receivability": "receivable",
+    "authority": "sovereign",
+    "immutability": "anchored"
+  },
+  "governance": {
+    "proposal_registry": "metadata/governance/proposals.json",
+    "templates": "metadata/governance/proposal-templates.json",
+    "snapshot_registry": "metadata/snapshots/snapshot-list.json",
+    "validator_registry": "metadata/validators/index.json"
+  },
+  "rules": {
+    "proposal_lifecycle": [
+      "draft",
+      "active",
+      "passed",
+      "rejected",
+      "withdrawn"
+    ],
+    "snapshot_requirement": "Each proposal must reference a valid snapshot ID.",
+    "metadata_hashing": "All governance actions must include a metadata hash for auditability."
+  },
+  "chains": [
+    "base",
+    "ethereum",
+    "solana",
+    "tron",
+    "ton",
+    "bitcoin"
+  ],
+  "validators": [
+    "930187",
+    "603807"
+  ],
+  "integrity": {
+    "hash_algorithm": "sha256",
+    "last_hash": "0x00000000000000000000000000000000000000000000000000000000C4PSL3",
+    "last_update": "2026-06-06T09:14:00Z"
+  },
+  "pwa": {
+    "manifest": "manifest.json",
+    "service_worker": "sw.js"
+  },
+  "updated": "2026-06-06T09:14:00Z"
+}
