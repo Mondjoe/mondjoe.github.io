@@ -1,0 +1,48 @@
+{
+  "capsule": "Charm Capsule",
+  "version": "1.0.0",
+  "owner": "Charm",
+  "sovereignty": {
+    "visibility": "visible",
+    "receivability": "receivable",
+    "authority": "sovereign",
+    "status": "immortalized"
+  },
+  "chains": [
+    "base",
+    "ethereum",
+    "solana",
+    "tron",
+    "ton",
+    "bitcoin"
+  ],
+  "validators": [
+    "930187",
+    "603807"
+  ],
+  "snapshots": {
+    "registry": "metadata/snapshots/snapshot-list.json",
+    "path": "metadata/snapshots/"
+  },
+  "governance": {
+    "manifest": "metadata/governance/capsule-manifest.json",
+    "proposals": "metadata/governance/proposals.json",
+    "templates": "metadata/governance/proposal-templates.json"
+  },
+  "validators_metadata": {
+    "index": "metadata/validators/index.json",
+    "path": "metadata/validators/"
+  },
+  "chains_metadata": {
+    "path": "metadata/chains/"
+  },
+  "assets": {
+    "og_image": "Assets/og-image.png",
+    "favicon": "favicon.ico"
+  },
+  "pwa": {
+    "manifest": "manifest.json",
+    "service_worker": "sw.js"
+  },
+  "updated": "2026-06-06T09:08:00Z"
+}
