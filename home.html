@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Charm Capsule — Home</title>
+
+  <link rel="stylesheet" href="/dashboard.css" />
+  <link rel="stylesheet" href="/snapshot.css" />
+  <link rel="icon" href="/favicon.ico" />
+</head>
+
+<body>
+
+  <div class="snapshot-list">
+    <div class="snapshot-card" style="text-align:center;">
+      <h1>Charm Capsule</h1>
+      <p>Your sovereign multi‑chain governance and identity system.</p>
+
+      <div style="margin-top:1.5rem;">
+        <button class="snapshot-btn" onclick="router.navigate('#/')">
+          Enter Dashboard
+        </button>
+      </div>
+    </div>
+
+    <div class="snapshot-card">
+      <h2>What is Charm Capsule?</h2>
+      <p>
+        A unified sovereign environment for:
+      </p>
+
+      <ul style="margin-top:1rem; line-height:1.7;">
+        <li>📡 Multi‑chain snapshots</li>
+        <li>🗳 Governance proposals & rules</li>
+        <li>🔗 Chain metadata & validators</li>
+        <li>📦 Capsule identity & sovereignty model</li>
+        <li>📱 Offline‑first PWA architecture</li>
+      </ul>
+    </div>
+
+    <div class="snapshot-card">
+      <h2>Quick Navigation</h2>
+      <button class="snapshot-btn" onclick="router.navigate('#/snapshots')">Snapshots</button>
+      <button class="snapshot-btn" onclick="router.navigate('#/governance')">Governance</button>
+      <button class="snapshot-btn" onclick="router.navigate('#/capsule')">Capsule Identity</button>
+      <button class="snapshot-btn" onclick="window.location.href='/settings.html'">Settings</button>
+      <button class="snapshot-btn" onclick="window.location.href='/about.html'">About</button>
+    </div>
+  </div>
+
+  <script src="/router.js"></script>
+
+</body>
+</html>
