@@ -4,147 +4,57 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Charm Capsule</title>
+  <title>Charm Capsule — Sovereign Dashboard</title>
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-
-  <!-- Manifest -->
+  <!-- PWA -->
   <link rel="manifest" href="/manifest.json" />
-
-  <!-- Theme Colors -->
   <meta name="theme-color" content="#0b0c10" />
-  <meta name="background-color" content="#000000" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Charm Capsule" />
-  <meta property="og:description" content="Proof‑Driven Governance • Multi‑Chain Capsule" />
-  <meta property="og:image" content="/Assets/og-image.png" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://mondjoe.github.io" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Charm Capsule" />
-  <meta name="twitter:description" content="Proof‑Driven Governance • Multi‑Chain Capsule" />
-  <meta name="twitter:image" content="/Assets/og-image.png" />
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
   <!-- Styles -->
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #000;
-      color: #fff;
-      font-family: "Inter", sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-    }
+  <link rel="stylesheet" href="/dashboard.css" />
+  <link rel="stylesheet" href="/snapshot.css" />
 
-    .container {
-      max-width: 600px;
-      padding: 20px;
-    }
-
-    h1 {
-      font-size: 42px;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 18px;
-      opacity: 0.8;
-      line-height: 1.6;
-    }
-
-    .moon {
-      width: 160px;
-      height: auto;
-      margin-bottom: 25px;
-    }
-
-    nav a {
-      color: #fff;
-      margin: 0 10px;
-      font-size: 16px;
-      text-decoration: none;
-      opacity: 0.85;
-    }
-
-    nav a:hover {
-      opacity: 1;
-    }
-  </style>
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" />
 </head>
 
 <body>
-  <div class="container">
-    <img src="/Assets/og-image.png" alt="Charm Capsule Moon Symbol" class="moon" />
-    <h1>Charm Capsule</h1>
-    <p>Proof‑Driven Governance • Multi‑Chain Capsule</p>
 
-    <nav style="margin-top: 20px;">
-      <a href="/dashboard.html">Dashboard</a>
-      <a href="/about.html">About</a>
-      <a href="/settings.html">Settings</a>
-    </nav>
+  <!-- Theme Toggle -->
+  <div class="theme-toggle" onclick="toggleTheme()">Toggle Theme</div>
+
+  <!-- Root App Container -->
+  <div id="app">
+    <!-- Router will inject content here -->
   </div>
 
-  <!-- PWA Service Worker + Update Popup -->
+  <!-- Scripts -->
+  <script src="/router.js"></script>
+  <script src="/snapshot-viewer.js"></script>
+  <script src="/snapshot-list.js"></script>
+  <script src="/governance.js"></script>
+  <script src="/capsule-info.js"></script>
+
   <script>
+    // Theme toggle logic
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute("data-theme");
+      const next = current === "light" ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", next);
+      localStorage.setItem("charm-theme", next);
+    }
+
+    // Load saved theme
+    (function () {
+      const saved = localStorage.getItem("charm-theme");
+      if (saved) document.documentElement.setAttribute("data-theme", saved);
+    })();
+
+    // Register service worker
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("/sw.js");
-
-      navigator.serviceWorker.addEventListener("message", (event) => {
-        if (event.data && event.data.type === "NEW_VERSION") {
-          showUpdatePopup();
-        }
-      });
-    }
-
-    function showUpdatePopup() {
-      const box = document.createElement("div");
-      box.style.position = "fixed";
-      box.style.bottom = "20px";
-      box.style.left = "50%";
-      box.style.transform = "translateX(-50%)";
-      box.style.background = "#111";
-      box.style.color = "#fff";
-      box.style.padding = "14px 20px";
-      box.style.borderRadius = "8px";
-      box.style.fontFamily = "Inter, sans-serif";
-      box.style.boxShadow = "0 0 12px rgba(255,255,255,0.15)";
-      box.style.zIndex = "9999";
-      box.style.textAlign = "center";
-      box.style.fontSize = "15px";
-      box.style.opacity = "0.95";
-
-      box.innerHTML = `
-        New version available — <strong>Refresh?</strong>
-        <button id="refreshBtn" style="
-          margin-left: 10px;
-          padding: 6px 12px;
-          background: #fff;
-          color: #000;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-        ">Refresh</button>
-      `;
-
-      document.body.appendChild(box);
-
-      document.getElementById("refreshBtn").onclick = () => {
-        location.reload(true);
-      };
     }
   </script>
+
 </body>
 </html>
