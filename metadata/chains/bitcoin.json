@@ -1,0 +1,38 @@
+{
+  "chain": "Bitcoin",
+  "chain_id": "bitcoin-mainnet",
+  "network_type": "L1",
+  "ecosystem": "Bitcoin",
+  "sovereignty": {
+    "visibility": "visible",
+    "receivability": "receivable",
+    "authority": "sovereign",
+    "anchoring": "enabled"
+  },
+  "rpc": {
+    "primary": "https://btc.getblock.io/mainnet/",
+    "fallback": "https://bitcoin-mainnet.public.blastapi.io",
+    "archive": "https://rpc.ankr.com/btc"
+  },
+  "explorers": {
+    "mempool": "https://mempool.space",
+    "blockstream": "https://blockstream.info"
+  },
+  "governance": {
+    "proposal_rules": "metadata/governance/capsule-manifest.json",
+    "snapshot_registry": "metadata/snapshots/snapshot-list.json"
+  },
+  "validators": [],
+  "snapshot_format": {
+    "html": true,
+    "json": true,
+    "required_fields": [
+      "id",
+      "network",
+      "status",
+      "timestamp"
+    ]
+  },
+  "metadata_hash": "0xB1TC000000000000000000000000000000000000000000000000000000000001",
+  "updated": "2026-06-06T09:26:00Z"
+}
