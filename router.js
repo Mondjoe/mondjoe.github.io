@@ -1,75 +1,140 @@
-// -------------------------------------------
-// Charm Capsule — Optional SPA Router
-// Works with multi-page PWA + GitHub Pages
-// -------------------------------------------
+/* -----------------------------------------------------------
+   Charm Capsule — Minimal SPA Router
+   File: router.js
+   Purpose: Hash-based routing for snapshots, governance, and dashboard
+----------------------------------------------------------- */
 
-// Pages you want to load dynamically
-const ROUTES = {
-  "/": "/index.html",
-  "/index.html": "/index.html",
-  "/dashboard": "/dashboard.html",
-  "/dashboard.html": "/dashboard.html",
-  "/about": "/about.html",
-  "/about.html": "/about.html",
-  "/settings": "/settings.html",
-  "/settings.html": "/settings.html"
-};
+(function () {
+  const routes = {
+    '': renderHome,
+    '#/': renderHome,
+    '#/snapshots': renderSnapshotList,
+    '#/snapshot': renderSnapshotView,        // expects ?id=XXXX
+    '#/governance': renderGovernance,
+    '#/capsule': renderCapsuleInfo
+  };
 
-// Load page content into the current DOM
-async function loadPage(url) {
-  try {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-    const html = await res.text();
-
-    // Extract <body> content only
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, "text/html");
-    const newBody = doc.body.innerHTML;
-
-    document.body.innerHTML = newBody;
-
-    // Re-run dashboard logic if needed
-    if (url.includes("dashboard")) {
-      if (window.loadDashboard) loadDashboard();
-    }
-
-    // Re-bind router links
-    bindRouterLinks();
-
-  } catch (err) {
-    console.error("Router load error:", err);
-    location.href = url; // fallback to full navigation
+  function parseHash() {
+    const hash = window.location.hash || '#/';
+    const [path, queryString] = hash.split('?');
+    const params = new URLSearchParams(queryString || '');
+    return { path, params };
   }
-}
 
-// Intercept clicks on internal links
-function bindRouterLinks() {
-  document.querySelectorAll("a").forEach((link) => {
-    const href = link.getAttribute("href");
+  function navigate(path) {
+    window.location.hash = path;
+  }
 
-    if (!href || href.startsWith("http") || href.startsWith("#")) return;
+  function onRouteChange() {
+    const { path, params } = parseHash();
+    const route = routes[path] || renderNotFound;
+    route(params);
+  }
 
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
+  // --------- DOM helpers ---------
 
-      const route = ROUTES[href] || href;
+  function getRoot() {
+    return document.getElementById('app') || document.body;
+  }
 
-      history.pushState({}, "", route);
-      loadPage(route);
-    });
-  });
-}
+  function setTitle(title) {
+    document.title = `Charm Capsule — ${title}`;
+  }
 
-// Handle browser back/forward
-window.addEventListener("popstate", () => {
-  const path = location.pathname;
-  const route = ROUTES[path] || path;
-  loadPage(route);
-});
+  function render(html) {
+    getRoot().innerHTML = html;
+  }
 
-// Initialize router
-document.addEventListener("DOMContentLoaded", () => {
-  bindRouterLinks();
-});
+  // --------- Route handlers ---------
+
+  function renderHome() {
+    setTitle('Dashboard');
+    render(`
+      <div class="snapshot-list">
+        <h1>Charm Capsule</h1>
+        <p>Unified sovereign dashboard.</p>
+        <div class="snapshot-actions">
+          <button class="snapshot-btn" onclick="router.navigate('#/snapshots')">
+            View Snapshots
+          </button>
+          <button class="snapshot-btn" onclick="router.navigate('#/governance')">
+            Governance
+          </button>
+          <button class="snapshot-btn" onclick="router.navigate('#/capsule')">
+            Capsule Identity
+          </button>
+        </div>
+      </div>
+    `);
+  }
+
+  function renderSnapshotList() {
+    setTitle('Snapshots');
+    // Assumes snapshot-list.html or inline rendering via JS elsewhere
+    render(`
+      <div class="snapshot-list">
+        <h1>Snapshots</h1>
+        <p>Select a snapshot to view its anchored state.</p>
+        <div id="snapshot-list-container"></div>
+      </div>
+    `);
+    if (window.loadSnapshotList) window.loadSnapshotList();
+  }
+
+  function renderSnapshotView(params) {
+    const id = params.get('id');
+    setTitle(id ? `Snapshot ${id}` : 'Snapshot');
+    render(`
+      <div class="snapshot-list">
+        <h1>Snapshot ${id || ''}</h1>
+        <div id="snapshot-viewer-container"></div>
+      </div>
+    `);
+    if (window.loadSnapshotViewer) window.loadSnapshotViewer(id);
+  }
+
+  function renderGovernance() {
+    setTitle('Governance');
+    render(`
+      <div class="snapshot-list">
+        <h1>Governance</h1>
+        <div id="governance-container"></div>
+      </div>
+    `);
+    if (window.loadGovernance) window.loadGovernance();
+  }
+
+  function renderCapsuleInfo() {
+    setTitle('Capsule Identity');
+    render(`
+      <div class="snapshot-list">
+        <h1>Capsule Identity</h1>
+        <div id="capsule-info-container"></div>
+      </div>
+    `);
+    if (window.loadCapsuleInfo) window.loadCapsuleInfo();
+  }
+
+  function renderNotFound() {
+    setTitle('Not Found');
+    render(`
+      <div class="snapshot-list">
+        <h1>404</h1>
+        <p>Route not found.</p>
+        <button class="snapshot-btn" onclick="router.navigate('#/')">
+          Back to Dashboard
+        </button>
+      </div>
+    `);
+  }
+
+  // --------- Init ---------
+
+  window.addEventListener('hashchange', onRouteChange);
+  window.addEventListener('load', onRouteChange);
+
+  // Expose minimal API
+  window.router = {
+    navigate
+  };
+})();
