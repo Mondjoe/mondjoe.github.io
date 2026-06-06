@@ -1,4 +1,8 @@
-og-image.png
-/Assets/favicon.ico
-/Assets/favicon-32.png
-/Assets/favicon-192.png
+Assets/
+  og-image.png
+  favicon.ico
+  favicon-32.png
+  favicon-192.png
+  splash-512.png
+  splash-1024.png
+  splash-2048.png
