@@ -1,0 +1,29 @@
+metadata/
+│
+├── snapshots/
+│   ├── snapshot-list.json
+│   ├── 603807.html
+│   ├── 603807.json
+│   ├── 930187.html
+│   ├── 930187.json
+│   └── ... more snapshots
+│
+├── validators/
+│   ├── index.json
+│   ├── 603807.json
+│   ├── 930187.json
+│   └── ... more validators
+│
+├── governance/
+│   ├── proposals.json
+│   ├── proposal-templates.json
+│   └── capsule-manifest.json
+│
+├── chains/
+│   ├── cosmos.json
+│   ├── eth.json
+│   ├── ton.json
+│   ├── base.json
+│   └── ... more chains
+│
+└── capsule.json
