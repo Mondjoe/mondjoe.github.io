@@ -1,6 +1,7 @@
 // ------------------------------------------------------
-// Charm Capsule — Snapshot Viewer Engine
+// Charm Capsule — Snapshot Viewer Engine (Final Version)
 // Supports HTML + JSON snapshots with graceful fallback
+// Works with SPA router + sovereign metadata structure
 // ------------------------------------------------------
 
 function getSnapshotId() {
@@ -28,22 +29,17 @@ async function fetchJson(url) {
   }
 }
 
-async function loadSnapshot() {
-  const id = getSnapshotId();
-  const container = document.getElementById("snapshot-container");
-
-  if (!container) {
-    console.error("Snapshot container not found.");
-    return;
-  }
+async function loadSnapshotViewer(id) {
+  const container = document.getElementById("snapshot-viewer-container");
+  if (!container) return;
 
   if (!id) {
-    container.innerHTML = `<p>No snapshot ID provided.</p>`;
+    container.innerHTML = `<div class="error-box">No snapshot ID provided.</div>`;
     return;
   }
 
-  const htmlPath = `${id}.html`;
-  const jsonPath = `${id}.json`;
+  const htmlPath = `metadata/snapshots/${id}.html`;
+  const jsonPath = `metadata/snapshots/${id}.json`;
 
   // Try HTML snapshot first
   const htmlContent = await fetchText(htmlPath);
@@ -67,15 +63,21 @@ async function loadSnapshot() {
 
   // Nothing found
   container.innerHTML = `
-    <p style="opacity:0.7;">
+    <div class="error-box">
       Snapshot <strong>${id}</strong> not found.<br>
-      Ensure <code>${id}.html</code> or <code>${id}.json</code> exists.
-    </p>
+      Ensure <code>${id}.html</code> or <code>${id}.json</code> exists in <code>metadata/snapshots/</code>.
+    </div>
   `;
 }
 
-// Auto‑init
-document.addEventListener("DOMContentLoaded", loadSnapshot);
+// Auto‑init for direct page loads
+document.addEventListener("DOMContentLoaded", () => {
+  const id = getSnapshotId();
+  if (id) loadSnapshotViewer(id);
+});
 
-// Re-run when SPA router loads this page dynamically
-window.addEventListener("charm:router:navigate", loadSnapshot);
+// Re-run when SPA router navigates to this page
+window.addEventListener("charm:router:navigate", () => {
+  const id = getSnapshotId();
+  if (id) loadSnapshotViewer(id);
+});
