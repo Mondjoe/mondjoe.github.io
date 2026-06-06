@@ -1,95 +1,35 @@
-# Charm — Validator Capsule
+# 🌙 Charm Capsule  
+**Proof‑Driven Governance • Multi‑Chain Capsule**
 
-A sovereign identity layer spanning chains, badges, proofs, contracts, and contributor history.  
-Built for clarity. Designed for sovereignty. Anchored across ecosystems.
+Charm Capsule is a minimal, identity‑driven, PWA‑enabled web application designed to deliver a clean, sovereign, moon‑lit interface for governance, identity, and capsule‑based workflows.
 
-Live Capsule → https://charmcapsule.io
+This repository powers the live site:
 
----
-
-## 🔥 What is the Validator Capsule?
-
-The validator capsule unifies:
-
-- Multi‑chain identity  
-- On‑chain badges  
-- Contributor proofs  
-- Rewards metadata  
-- Indexed contracts  
-- Legacy continuity  
-- Sovereign namespace  
-
-This capsule is the single source of truth for Charm’s presence across chains.
+👉 **https://mondjoe.github.io**
 
 ---
 
-## 🛡️ Chain Identities
+## ✨ Features
 
-Ethereum: 0x7F5f4D9………5ABA643742
-BNB Chain: 0x975b9………015C993F
-Solana: 4DjanGEY…….tHCk7KH
-Optimism: 0xd9adbcBB……..a3418Ef4cec
-Arbitrum: 0x81Ebe………..925fe07025
-Base: 0x7F385cF……..fF1235a 
----
+### **🌙 Moon Identity Branding**
+- Abstract moon‑glow symbol  
+- OG image for social previews  
+- Favicon + app icon  
+- Full dark‑theme aesthetic  
 
-## 🏅 Badges
+### **📱 Progressive Web App (PWA)**
+- Installable on mobile & desktop  
+- Offline fallback page  
+- Auto‑update popup  
+- Standalone app mode  
+- Splash screens for iOS & Android  
 
-- **Validator** — Core role  
-- **Multi‑Chain** — Cross‑ecosystem presence  
-- **Contributor** — Rewards & proofs  
-- **Legacy** — Long‑term archive  
-- **Identity** — Sovereign namespace  
-
----
-
-## 🔗 Wallets
-
-- Ethereum: 0x7F5f4D9………5ABA643742  
-- Base: 0x7F385cF……..fF1235a  
-- Solana: 4DjanGEY…….tHCk7KH  
-- Optimism: 0xd9adbcBB……..a3418Ef4cec
-- Arbitrum: 0x81Ebe………..925fe07025
-- Base: 0x7F385cF……..fF1235a  --     - ID:mondjoe.cb.id  
+### **🔗 Multi‑Chain Governance Theme**
+- Designed for modular governance dashboards  
+- Capsule‑based identity  
+- Future‑ready for validator dashboards & proposal tracking  
 
 ---
 
-## 🧵 Contracts Indexed
+## 📁 Project Structure
 
-- BRETT (Base)  
-- AXOME MultiSend Receipt (Base)  
-- SALUKI Receipt (Base)  
-- BDOGE Receipt (Base)  
-- TOBY Receipt (Base)  
-- 1inch Aggregation Router V5 (Polygon)  
-- BNB Asset (Polygon)  
-- Unlabeled Asset (Polygon)  
-
----
-
-## 📊 Contributor Reactions
-
-- ✅ Contributor: Bruce, Graceee, Kuya  
-- 🏅 Investor: Antimarc, Manic  
-- 🌐 Community: Juine, Viking Rise  
-
----
-
-## 📦 IPFS Export
-
-`ipfs://QmYourCIDHere`
-
----
-
-## 📁 Dashboard
-
-- Contributor rewards  
-- Proof files  
-- Capsule logs  
-- Metadata continuity  
-
----
-
-## 📜 License
-
-MIT License © 2025 Mond Joe
