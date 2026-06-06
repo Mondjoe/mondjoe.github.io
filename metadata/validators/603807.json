@@ -1,0 +1,32 @@
+{
+  "id": "603807",
+  "name": "Charm Sovereign Validator — Base",
+  "network": "Base",
+  "sovereignty": {
+    "visibility": "visible",
+    "receivability": "receivable",
+    "authority": "sovereign",
+    "status": "anchored"
+  },
+  "identity": {
+    "operator": "Charm",
+    "capsule": "Charm Capsule",
+    "capsule_id": "capsule.json",
+    "description": "Sovereign validator identity anchored on Base network."
+  },
+  "snapshots": [
+    {
+      "id": 603807,
+      "file": "metadata/snapshots/603807.html",
+      "json": "metadata/snapshots/603807.json",
+      "status": "Anchored",
+      "timestamp": "2025-05-28T01:49:01Z"
+    }
+  ],
+  "governance": {
+    "proposals": "metadata/governance/proposals.json",
+    "capsule_manifest": "metadata/governance/capsule-manifest.json"
+  },
+  "metadata_hash": "0x0000000000000000000000000000000000000000000000000000000000603807",
+  "updated": "2026-06-06T09:12:00Z"
+}
