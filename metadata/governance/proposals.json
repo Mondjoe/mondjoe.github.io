@@ -1,0 +1,35 @@
+[
+  {
+    "id": "prop-930187-001",
+    "title": "Validator Sovereignty Declaration",
+    "description": "Formal declaration of validator sovereignty, visibility, receivability, and anchored authority across all supported chains.",
+    "chain": "multi-chain",
+    "status": "passed",
+    "snapshot": 930187,
+    "metadata_hash": "0xA1F0C0DE00000000000000000000000000000000000000000000009301870001",
+    "created_at": "2025-05-28T01:49:01Z",
+    "tags": ["sovereignty", "identity", "capsule"]
+  },
+  {
+    "id": "prop-603807-001",
+    "title": "Capsule Metadata Standardization",
+    "description": "Adopt a unified metadata structure for snapshots, validators, governance, and chain anchors to ensure long-term capsule portability.",
+    "chain": "multi-chain",
+    "status": "passed",
+    "snapshot": 603807,
+    "metadata_hash": "0xA1F0C0DE00000000000000000000000000000000000000000000006038070001",
+    "created_at": "2025-05-28T01:49:01Z",
+    "tags": ["metadata", "standards", "capsule"]
+  },
+  {
+    "id": "prop-BASE-SEC-001",
+    "title": "Base Network Security Alignment",
+    "description": "Align validator operational parameters with Base network security recommendations, including snapshot anchoring cadence and metadata hashing rules.",
+    "chain": "base",
+    "status": "active",
+    "snapshot": null,
+    "metadata_hash": null,
+    "created_at": "2026-01-12T10:00:00Z",
+    "tags": ["security", "base", "operations"]
+  }
+]
