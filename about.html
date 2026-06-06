@@ -6,131 +6,77 @@
 
   <title>About — Charm Capsule</title>
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-
-  <!-- Manifest -->
-  <link rel="manifest" href="/manifest.json" />
-
-  <!-- Theme Colors -->
-  <meta name="theme-color" content="#0b0c10" />
-  <meta name="background-color" content="#000000" />
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
-
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #000;
-      color: #fff;
-      font-family: "Inter", sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 20px;
-    }
-
-    h1 {
-      font-size: 36px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-
-    p {
-      font-size: 16px;
-      opacity: 0.8;
-      text-align: center;
-      max-width: 700px;
-      line-height: 1.6;
-      margin-bottom: 30px;
-    }
-
-    .card {
-      width: 100%;
-      max-width: 700px;
-      background: #111;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 12px rgba(255,255,255,0.08);
-      margin-bottom: 20px;
-    }
-
-    .card h2 {
-      margin: 0 0 10px 0;
-      font-size: 22px;
-      font-weight: 600;
-    }
-
-    .card p {
-      margin: 0;
-      opacity: 0.75;
-      line-height: 1.5;
-    }
-
-    nav {
-      margin-top: 30px;
-      text-align: center;
-    }
-
-    nav a {
-      color: #fff;
-      margin: 0 10px;
-      font-size: 16px;
-      text-decoration: none;
-      opacity: 0.85;
-    }
-
-    nav a:hover {
-      opacity: 1;
-    }
-  </style>
+  <link rel="stylesheet" href="/dashboard.css" />
+  <link rel="stylesheet" href="/snapshot.css" />
+  <link rel="icon" href="/favicon.ico" />
 </head>
 
 <body>
 
-  <h1>About Charm Capsule</h1>
+  <div class="snapshot-list">
+    <div class="snapshot-card">
+      <h1>About Charm Capsule</h1>
+      <p>
+        Charm Capsule is a sovereign, multi‑chain governance and identity system.
+        Designed for clarity, permanence, and control, it unifies:
+      </p>
 
-  <p>
-    Charm Capsule is a proof‑driven governance layer designed for multi‑chain ecosystems.  
-    It unifies validator data, governance snapshots, and capsule‑based decision flows into a single, elegant interface.
-  </p>
+      <ul style="margin-top:1rem; line-height:1.7;">
+        <li>📡 Multi‑chain snapshots</li>
+        <li>🗳 Governance proposals & rules</li>
+        <li>🔗 Chain metadata & validators</li>
+        <li>📦 Capsule identity & sovereignty model</li>
+        <li>📱 PWA offline‑first architecture</li>
+      </ul>
+    </div>
 
-  <div class="card">
-    <h2>Mission</h2>
-    <p>
-      To create a transparent, verifiable, and modular governance experience that works across chains —  
-      empowering validators, contributors, and communities with clarity and control.
-    </p>
+    <div class="snapshot-card">
+      <h2>Sovereign Philosophy</h2>
+      <p>
+        Charm Capsule is built on a simple principle:
+        <strong>your identity and governance must remain yours.</strong>
+      </p>
+
+      <p>
+        Every module — snapshots, governance, metadata, routing, offline mode —
+        is designed to be:
+      </p>
+
+      <ul style="margin-top:1rem; line-height:1.7;">
+        <li>🛡 Self‑contained</li>
+        <li>🌙 Minimal</li>
+        <li>🔐 Sovereign</li>
+        <li>📜 Transparent</li>
+        <li>🌐 Multi‑chain aware</li>
+      </ul>
+    </div>
+
+    <div class="snapshot-card">
+      <h2>Technical Architecture</h2>
+      <p>The capsule runs on a modular PWA architecture:</p>
+
+      <ul style="margin-top:1rem; line-height:1.7;">
+        <li>⚙ SPA Router (`router.js`)</li>
+        <li>📄 Snapshot Viewer (`snapshot-viewer.js`)</li>
+        <li>📚 Snapshot List Loader (`snapshot-list.js`)</li>
+        <li>🏛 Governance Engine (`governance.js`)</li>
+        <li>🧬 Capsule Identity Viewer (`capsule-info.js`)</li>
+        <li>📦 Offline Engine (`sw.js`)</li>
+        <li>📱 PWA Manifest (`manifest.json`)</li>
+      </ul>
+    </div>
+
+    <div class="snapshot-card">
+      <h2>Navigation</h2>
+      <button class="snapshot-btn" onclick="router.navigate('#/')">Dashboard</button>
+      <button class="snapshot-btn" onclick="router.navigate('#/snapshots')">Snapshots</button>
+      <button class="snapshot-btn" onclick="router.navigate('#/governance')">Governance</button>
+      <button class="snapshot-btn" onclick="router.navigate('#/capsule')">Capsule Identity</button>
+      <button class="snapshot-btn" onclick="window.location.href='/settings.html'">Settings</button>
+    </div>
   </div>
 
-  <div class="card">
-    <h2>Design Philosophy</h2>
-    <p>
-      Minimal. Modular. Proof‑first.  
-      Every component is built to be portable, auditable, and future‑ready.
-    </p>
-  </div>
-
-  <div class="card">
-    <h2>Roadmap</h2>
-    <p>
-      • Validator viewer  
-      • Snapshot explorer  
-      • Governance capsule engine  
-      • Multi‑chain integration  
-      • Real‑time alerts  
-    </p>
-  </div>
-
-  <nav>
-    <a href="/index.html">Home</a>
-    <a href="/dashboard.html">Dashboard</a>
-    <a href="/settings.html">Settings</a>
-  </nav>
+  <script src="/router.js"></script>
 
 </body>
 </html>
