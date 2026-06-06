@@ -3,13 +3,145 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard — Charm Capsule</title>
+
+  <title>Settings — Charm Capsule</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+  <!-- Manifest -->
   <link rel="manifest" href="/manifest.json" />
-  <link rel="icon" href="/favicon.ico" />
+
+  <!-- Theme Colors -->
+  <meta name="theme-color" content="#0b0c10" />
+  <meta name="background-color" content="#000000" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #fff;
+      font-family: "Inter", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    p {
+      font-size: 16px;
+      opacity: 0.8;
+      text-align: center;
+      max-width: 700px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 700px;
+      background: #111;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(255,255,255,0.08);
+      margin-bottom: 20px;
+    }
+
+    .card h2 {
+      margin: 0 0 10px 0;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .card p {
+      margin: 0;
+      opacity: 0.75;
+      line-height: 1.5;
+    }
+
+    .toggle {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    nav {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 10px;
+      font-size: 16px;
+      text-decoration: none;
+      opacity: 0.85;
+    }
+
+    nav a:hover {
+      opacity: 1;
+    }
+  </style>
 </head>
 
 <body>
-  <h1>Dashboard</h1>
-  <p>Coming soon…</p>
+
+  <h1>Settings</h1>
+
+  <p>Configure your Charm Capsule experience. More options will appear as modules are added.</p>
+
+  <div class="card">
+    <h2>Theme</h2>
+    <p>Dark mode is enabled by default.</p>
+    <div class="toggle">
+      <label for="themeToggle">Toggle Theme (coming soon)</label>
+      <input type="checkbox" id="themeToggle" disabled />
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Cache</h2>
+    <p>Clear offline cache and force service worker refresh.</p>
+    <button onclick="clearCache()" style="
+      margin-top: 10px;
+      padding: 8px 14px;
+      background: #fff;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    ">Clear Cache</button>
+  </div>
+
+  <script>
+    async function clearCache() {
+      const keys = await caches.keys();
+      for (const key of keys) {
+        await caches.delete(key);
+      }
+      alert("Cache cleared. The app will refresh.");
+      location.reload(true);
+    }
+  </script>
+
+  <nav>
+    <a href="/index.html">Home</a>
+    <a href="/dashboard.html">Dashboard</a>
+    <a href="/about.html">About</a>
+  </nav>
+
 </body>
 </html>
