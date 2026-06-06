@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Snapshot Viewer — Charm Capsule</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+  <!-- Manifest -->
+  <link rel="manifest" href="/manifest.json" />
+
+  <!-- Theme Colors -->
+  <meta name="theme-color" content="#0b0c10" />
+  <meta name="background-color" content="#000000" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #fff;
+      font-family: "Inter", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    p {
+      font-size: 16px;
+      opacity: 0.8;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #snapshot-container {
+      width: 100%;
+      max-width: 900px;
+      min-height: 70vh;
+      background: #111;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
+
+    .snapshot-frame {
+      width: 100%;
+      height: 75vh;
+      border: none;
+      border-radius: 8px;
+      background: #000;
+    }
+
+    .snapshot-json {
+      background: #000;
+      padding: 20px;
+      border-radius: 10px;
+      color: #0f0;
+      font-size: 14px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+
+    nav {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 10px;
+      font-size: 16px;
+      text-decoration: none;
+      opacity: 0.85;
+    }
+
+    nav a:hover {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Snapshot Viewer</h1>
+  <p>Viewing snapshot data • HTML or JSON • Sovereign validator capsule</p>
+
+  <div id="snapshot-container">
+    Loading snapshot…
+  </div>
+
+  <nav>
+    <a href="/index.html">Home</a>
+    <a href="/dashboard.html">Dashboard</a>
+    <a href="/governance.html">Governance</a>
+    <a href="/settings.html">Settings</a>
+  </nav>
+
+  <script src="/snapshot-viewer.js"></script>
+  <script src="/router.js"></script>
+
+</body>
+</html>
+
