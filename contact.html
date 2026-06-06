@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Contact — Charm Capsule</title>
+
+  <link rel="stylesheet" href="/dashboard.css" />
+  <link rel="stylesheet" href="/snapshot.css" />
+  <link rel="icon" href="/favicon.ico" />
+</head>
+
+<body>
+
+  <div class="snapshot-list">
+
+    <div class="snapshot-card" style="text-align:center;">
+      <h1>Contact</h1>
+      <p>Reach out to the steward of the Charm Capsule.</p>
+    </div>
+
+    <div class="snapshot-card">
+      <h2>Primary Contact</h2>
+      <p>You can reach the capsule steward through the following channels:</p>
+
+      <ul style="margin-top:1rem; line-height:1.7;">
+        <li>📨 <strong>Email:</strong> <span style="opacity:0.85;">(your email here)</span></li>
+        <li>💬 <strong>Telegram:</strong> <span style="opacity:0.85;">(your Telegram handle)</span></li>
+        <li>🌐 <strong>Website:</strong> <span style="opacity:0.85;">charmcapsule.io</span></li>
+      </ul>
+    </div>
+
+    <div class="snapshot-card">
+      <h2>Message</h2>
+      <p>Send a short message or inquiry.</p>
+
+      <form onsubmit="event.preventDefault(); alert('Message sent');" style="margin-top:1rem;">
+        <input
+          type="text"
+          placeholder="Your name"
+          required
+          style="width:100%; padding:0.6rem; margin-bottom:0.8rem; border-radius:8px; border:1px solid var(--border); background:var(--card-bg); color:var(--fg);"
+        />
+
+        <input
+          type="email"
+          placeholder="Your email"
+          required
+          style="width:100%; padding:0.6rem; margin-bottom:0.8rem; border-radius:8px; border:1px solid var(--border); background:var(--card-bg); color:var(--fg);"
+        />
+
+        <textarea
+          placeholder="Your message"
+          required
+          rows="4"
+          style="width:100%; padding:0.6rem; margin-bottom:0.8rem; border-radius:8px; border:1px solid var(--border); background:var(--card-bg); color:var(--fg);"
+        ></textarea>
+
+        <button class="snapshot-btn" type="submit">Send Message</button>
+      </form>
+    </div>
+
+    <div class="snapshot-card">
+      <h2>Navigation</h2>
+      <button class="snapshot-btn" onclick="router.navigate('#/')">Dashboard</button>
+      <button class="snapshot-btn" onclick="router.navigate('#/snapshots')">Snapshots</button>
+      <button class="snapshot-btn" onclick="router.navigate('#/governance')">Governance</button>
+      <button class="snapshot-btn" onclick="router.navigate('#/capsule')">Capsule Identity</button>
+      <button class="snapshot-btn" onclick="window.location.href='/settings.html'">Settings</button>
+      <button class="snapshot-btn" onclick="window.location.href='/about.html'">About</button>
+    </div>
+
+  </div>
+
+  <script src="/router.js"></script>
+
+</body>
+</html>
