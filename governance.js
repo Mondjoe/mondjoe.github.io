@@ -7,7 +7,7 @@
 (function () {
   const GOVERNANCE_CONFIG = {
     proposalsUrl: 'metadata/governance/proposals.json',
-    templatesUrl: 'metadata/governance/proposal-templates.json',
+    templatesUrl: 'proposal-templates.json'
     capsuleManifestUrl: 'metadata/governance/capsule-manifest.json'
   };
 
