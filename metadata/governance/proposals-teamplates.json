@@ -1,0 +1,42 @@
+[
+  {
+    "template_id": "tmpl-sovereignty-001",
+    "title": "Sovereignty Declaration",
+    "description": "A formal declaration asserting validator sovereignty, visibility, receivability, and anchored authority across supported chains.",
+    "required_fields": ["title", "description", "snapshot", "metadata_hash"],
+    "default_chain": "multi-chain",
+    "tags": ["sovereignty", "identity", "capsule"]
+  },
+  {
+    "template_id": "tmpl-metadata-001",
+    "title": "Metadata Standardization",
+    "description": "Proposal to adopt or update metadata structures for snapshots, validators, governance, and chain anchors.",
+    "required_fields": ["title", "description", "snapshot"],
+    "default_chain": "multi-chain",
+    "tags": ["metadata", "standards", "capsule"]
+  },
+  {
+    "template_id": "tmpl-security-001",
+    "title": "Network Security Alignment",
+    "description": "Proposal to align validator operational parameters with network security recommendations, including snapshot cadence and metadata hashing rules.",
+    "required_fields": ["title", "description"],
+    "default_chain": "base",
+    "tags": ["security", "operations", "base"]
+  },
+  {
+    "template_id": "tmpl-governance-001",
+    "title": "Governance Process Update",
+    "description": "Proposal to update governance lifecycle rules, metadata hashing requirements, or proposal submission standards.",
+    "required_fields": ["title", "description"],
+    "default_chain": "multi-chain",
+    "tags": ["governance", "rules", "process"]
+  },
+  {
+    "template_id": "tmpl-upgrade-001",
+    "title": "Capsule Upgrade",
+    "description": "Proposal to upgrade the Charm Capsule version, add new modules, or modify sovereignty parameters.",
+    "required_fields": ["title", "description", "metadata_hash"],
+    "default_chain": "multi-chain",
+    "tags": ["upgrade", "capsule", "versioning"]
+  }
+]
