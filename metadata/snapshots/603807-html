@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Snapshot 603807 — Validator Transaction Report</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-elevated: #141a2b;
+      --bg-soft: #1b2236;
+      --border-subtle: #252c42;
+      --accent: #4f8cff;
+      --accent-soft: rgba(79, 140, 255, 0.12);
+      --accent-strong: #7dd3fc;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --text-soft: #6b7280;
+      --danger: #f97373;
+      --success: #4ade80;
+      --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --radius-lg: 14px;
+      --radius-md: 10px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+      --shadow-subtle: 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 32px 20px 40px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #111827 0, #020617 45%, #020617 100%);
+      color: var(--text-main);
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-muted);
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--success);
+      box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.18);
+    }
+
+    .pill-accent {
+      border-color: rgba(79, 140, 255, 0.6);
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+    }
+
+    h1 {
+      font-size: 24px;
+      margin: 0;
+      letter-spacing: 0.02em;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .snapshot-id {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent-strong);
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(79, 140, 255, 0.5);
+      background: radial-gradient(circle at top left, rgba(79, 140, 255, 0.18), transparent 55%);
+      white-space: nowrap;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, rgba(79, 140, 255, 0.12), transparent 55%), var(--bg-elevated);
+      border-radius: var(--radius-lg);
+      padding: 16px 16px 14px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card-plain {
+      background: var(--bg-elevated);
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
+
+    .card-tag {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--text-soft);
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 120px;
+    }
+
+    .meta-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-soft);
+    }
+
+    .meta-value {
+      font-size: 13px;
+      font-family: var(--mono);
+      color: var(--text-main);
+      word-break: break-all;
+    }
+
+    .meta-value-strong {
+      color: var(--accent-strong);
+    }
+
+    .meta-value-soft {
+      color: var(--text-muted);
+    }
+
+    .section {
+      margin-top: 10px;
+    }
+
+    .section-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .kv-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 8px 14px;
+      font-size: 13px;
+    }
+
+    .kv-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-soft);
+      margin-bottom: 2px;
+    }
+
+    .kv-value {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-main);
+      word-break: break-all;
+    }
+
+    .pill-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(34, 197, 94, 0.6);
+      background: rgba(22, 163, 74, 0.16);
+      color: #bbf7d0;
+    }
+
+    .pill-status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+    }
+
+    .table-card {
+      margin-top: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-top: 4px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--bg-soft);
+    }
+
+    thead {
+      background: linear-gradient(to right, rgba(79, 140, 255, 0.18), rgba(15, 23, 42, 0.9));
+    }
+
+    th, td {
+      padding: 7px 9px;
+      border-bottom: 1px solid rgba(31, 41, 55, 0.9);
+      text-align: left;
+    }
+
+    th {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tbody tr:nth-child(even) {
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .mono {
+      font-family: var(--mono);
+    }
+
+    .token {
+      font-weight: 600;
+      color: var(--accent-strong);
+    }
+
+    .amount {
+      font-family: var(--mono);
+      color: var(--text-main);
+    }
+
+    .amount-soft {
+      color: var(--text-muted);
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .summary-item {
+      background: var(--bg-soft);
+      border-radius: var(--radius-md);
+      padding: 10px 11px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .summary-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-soft);
+      margin-bottom: 4px;
+    }
+
+    .summary-value {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text-main);
+    }
+
+    .summary-value-accent {
+      color: var(--accent-strong);
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      font-size: 11px;
+      color: var(--text-soft);
+      text-align: right;
+    }
+
+    @media (max-width: 800px) {
+      .grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      body {
+        padding: 20px 14px 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div class="title-block">
+        <h1>Snapshot 603807 — Validator Transaction Report</h1>
+        <div class="subtitle">Base network · Anchored snapshot · Sovereign validator capsule</div>
+        <div class="badge-row">
+          <div class="pill">
+            <span class="pill-dot"></span>
+            <span>Anchored on Base</span>
+          </div>
+          <div class="pill pill-accent">
+            <span>Multicall Orchestrated Flow</span>
+          </div>
+        </div>
+      </div>
+      <div class="snapshot-id">
+        SNAPSHOT&nbsp;ID:&nbsp;603807
+      </div>
+    </header>
+
+    <section class="grid">
+      <!-- Left: Metadata + Transaction -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Metadata</div>
+          <div class="card-tag">Snapshot Context</div>
+        </div>
+        <div class="meta-row">
+          <div class="meta-item">
+            <div class="meta-label">Snapshot</div>
+            <div class="meta-value meta-value-strong">603807</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Network</div>
+            <div class="meta-value">Base</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Status</div>
+            <div class="pill-status">
+              <span class="pill-status-dot"></span>
+              <span>Anchored</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Transaction</div>
+          <div class="kv-list">
+            <div>
+              <div class="kv-label">Hash</div>
+              <div class="kv-value">
+                0x1a143c4b4d8ff00a14a7e76d2eb8fff8b9ecc3292a7aa04112c4f212ff1a34f6
+              </div>
+            </div>
+            <div>
+              <div class="kv-label">Block Number</div>
+              <div class="kv-value">30803797</div>
+            </div>
+            <div>
+              <div class="kv-label">Timestamp (UTC)</div>
+              <div class="kv-value">2025-05-28T01:49:01Z</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Orchestrator -->
+      <div class="card card-plain">
+        <div class="card-header">
+          <div class="card-title">Orchestrator</div>
+          <div class="card-tag">Execution Route</div>
+        </div>
+        <div class="kv-list">
+          <div>
+            <div class="kv-label">Contract</div>
+            <div class="kv-value">
+              0x3e8d5707094422c4c1955209E26834e31Dc1Fd6F
+            </div>
+          </div>
+          <div>
+            <div class="kv-label">Name</div>
+            <div class="kv-value">Thirdweb</div>
+          </div>
+          <div>
+            <div class="kv-label">Function</div>
+            <div class="kv-value">multicall(bytes[] data)</div>
+          </div>
+          <div>
+            <div class="kv-label">Method ID</div>
+            <div class="kv-value mono">0xac9650d8</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fungible Token Flows -->
+    <section class="card card-plain table-card">
+      <div class="card-header">
+        <div class="card-title">Fungible Token Flows</div>
+        <div class="card-tag">USDT → WETH → ETH</div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>Asset / Route</th>
+            <th>Amount</th>
+            <th>From / To / Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Approval</td>
+            <td><span class="token">USDT</span></td>
+            <td><span class="amount">0.076841</span></td>
+            <td class="mono">from 0xF5042e6f… to 0x000000…22734</td>
+          </tr>
+          <tr>
+            <td>Approval</td>
+            <td><span class="token">USDT</span></td>
+            <td><span class="amount">9.040060</span></td>
+            <td class="mono">from 0xF5042e6f… to 0x000000…22734</td>
+          </tr>
+          <tr>
+            <td>SolverCallExecuted</td>
+            <td><span class="token">USDT → WETH</span></td>
+            <td><span class="amount">8.963219 → 0</span></td>
+            <td class="mono">Route initialization</td>
+          </tr>
+          <tr>
+            <td>Transfer</td>
+            <td><span class="token">USDT</span></td>
+            <td><span class="amount">0.076841</span></td>
+            <td class="mono">to 0xf70da9…</td>
+          </tr>
+          <tr>
+            <td>Transfer</td>
+            <td><span class="token">USDT</span></td>
+            <td><span class="amount">8.963219</span></td>
+            <td class="mono">to 0x526d54…</td>
+          </tr>
+          <tr>
+            <td>Transfer</td>
+            <td><span class="token">WETH</span></td>
+            <td><span class="amount">0.002940556707151654</span></td>
+            <td class="mono">to 0xEA758C…</td>
+          </tr>
+          <tr>
+            <td>Swap</td>
+            <td><span class="token">USDT → WETH</span></td>
+            <td>
+              <span class="amount">8.963219 → 0.002940556707151654</span>
+              <span class="amount-soft">(fee 0.000295 USDT)</span>
+            </td>
+            <td class="mono">Swap execution</td>
+          </tr>
+          <tr>
+            <td>Withdrawal</td>
+            <td><span class="token">WETH → ETH</span></td>
+            <td><span class="amount">0.002940556707151654</span></td>
+            <td class="mono">WETH unwrapped to ETH</td>
+          </tr>
+          <tr>
+            <td>SolverNativeTransfer</td>
+            <td><span class="token">ETH</span></td>
+            <td><span class="amount">0.002940556707151654</span></td>
+            <td class="mono">to 0xF5042e6f…</td>
+          </tr>
+          <tr>
+            <td>SolverNativeTransfer</td>
+            <td><span class="token">ETH</span></td>
+            <td><span class="amount">0.002940556707151654</span></td>
+            <td class="mono">to 0x2B93FD3D…</td>
+          </tr>
+          <tr>
+            <td>SolverCallExecuted</td>
+            <td><span class="token">—</span></td>
+            <td><span class="amount">—</span></td>
+            <td class="mono">Recipient: 0x2B93FD3D…</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- NFT Transfers -->
+    <section class="card card-plain table-card">
+      <div class="card-header">
+        <div class="card-title">NFT Transfers</div>
+        <div class="card-tag">Non‑Fungible Movements</div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>Collection</th>
+            <th>Token ID</th>
+            <th>From</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Transfer</td>
+            <td>SHIBA VOUCHER</td>
+            <td class="mono">345</td>
+            <td class="mono">0xcec2500B…</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Summary -->
+    <section class="card card-plain">
+      <div class="card-header">
+        <div class="card-title">Summary</div>
+        <div class="card-tag">Execution Outcome</div>
+      </div>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <div class="summary-label">Total USDT Swapped</div>
+          <div class="summary-value summary-value-accent">8.963219</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Total ETH Received</div>
+          <div class="summary-value">0.002940556707151654</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">NFT Transfers</div>
+          <div class="summary-value">1</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Status</div>
+          <div class="summary-value" style="color:#4ade80;">success</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer-note">
+      Snapshot 603807 · Anchored on Base · Generated as validator sovereignty capsule.
+    </div>
+  </div>
+</body>
+</html>
