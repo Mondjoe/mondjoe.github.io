@@ -1,0 +1,22 @@
+[
+  {
+    "id": "930187",
+    "name": "Charm Sovereign Validator — Base",
+    "network": "Base",
+    "metadata": "metadata/validators/930187.json",
+    "snapshots": [
+      "930187"
+    ],
+    "status": "active"
+  },
+  {
+    "id": "603807",
+    "name": "Charm Sovereign Validator — Base",
+    "network": "Base",
+    "metadata": "metadata/validators/603807.json",
+    "snapshots": [
+      "603807"
+    ],
+    "status": "active"
+  }
+]
