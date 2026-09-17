@@ -1,0 +1,150 @@
+/* -----------------------------------------------------------
+   Charm Capsule — Snapshot System Stylesheet
+   Premium, minimal, sovereign UI
+----------------------------------------------------------- */
+
+:root {
+  color-scheme: dark light;
+
+  --bg: #050816;
+  --fg: #e5e7eb;
+
+  --card-bg: #0a0f1a;
+  --border: #1e293b;
+  --accent: #38bdf8;
+  --accent-soft: rgba(56, 189, 248, 0.15);
+
+  --radius: 10px;
+  --transition: 0.2s ease;
+}
+
+[data-theme="light"] {
+  --bg: #f9fafb;
+  --fg: #020617;
+
+  --card-bg: #ffffff;
+  --border: #cbd5e1;
+  --accent: #0284c7;
+  --accent-soft: rgba(2, 132, 199, 0.15);
+}
+
+/* Base layout */
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+}
+
+/* Snapshot list container */
+
+.snapshot-list {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+}
+
+.snapshot-list h1 {
+  margin: 0 0 1rem 0;
+  color: var(--accent);
+}
+
+/* Snapshot card */
+
+.snapshot-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  transition: var(--transition);
+}
+
+.snapshot-card:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.snapshot-card h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+
+.snapshot-meta {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+/* Buttons */
+
+.snapshot-actions {
+  margin-top: 1rem;
+}
+
+.snapshot-btn {
+  display: inline-block;
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  background: transparent;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.snapshot-btn:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+/* Viewer iframe */
+
+.snapshot-frame {
+  width: 100%;
+  height: 80vh;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  margin-top: 1rem;
+}
+
+/* JSON viewer */
+
+.snapshot-json {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: #020617;
+  font-size: 13px;
+  overflow-x: auto;
+}
+
+/* Error box */
+
+.error-box {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid #b91c1c;
+  background: rgba(185, 28, 28, 0.1);
+  color: #fecaca;
+  font-size: 14px;
+}
+
+/* Links */
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
